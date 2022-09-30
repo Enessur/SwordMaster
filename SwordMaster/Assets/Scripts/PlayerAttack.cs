@@ -6,20 +6,20 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float timeBtwAttack;
-    public float attackRate;
-
-    public Transform attackPos;
-    public float attackRange;
-    public LayerMask whatIsEnemies;
-    public int damage;
+    [SerializeField] private float attackRate;
+    [SerializeField] private Transform attackPos;
+    [SerializeField] private float attackRange;
+    [SerializeField] private LayerMask whatIsEnemies;
+    [SerializeField] private int damage;
 
     void Update()
     {
         if (timeBtwAttack <= 0)
         {
             //left button, 1 for right
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
+                Debug.Log("Hit");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange,whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
