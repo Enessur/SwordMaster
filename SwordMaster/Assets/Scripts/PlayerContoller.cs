@@ -7,23 +7,21 @@ public class PlayerContoller : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashAmount = 50f;
-    
+
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
     private Animator _animator;
     private string _currentAnimation;
     private bool _isDashButtonDown;
-    // private bool isAttacking;
-    // private bool isAttackPressed;
-    
+
+
     public SpriteRenderer _renderer;
-  
+
     //Animation States
-    private const string PLAYER_IDLE = "Idle"; const string PLAYER_RUN = "Run";
-    // private const string PLAYER_ATTACK1 = "Attack1";
-    // private const string PLAYER_ATTACK2 = "Attack2";
-    // private const string PLAYER_ATTACK3 = "Attack3";
+    const string PLAYER_IDLE = "Idle";
+    const string PLAYER_RUN = "Run";
     
+
 
     private void Start()
     {
@@ -57,7 +55,7 @@ public class PlayerContoller : MonoBehaviour
         float moveY = 0f;
 
         //todo:find a better way to use flipX
-        
+
         if (Input.GetKey(KeyCode.W))
         {
             moveY = +1f;
@@ -92,7 +90,7 @@ public class PlayerContoller : MonoBehaviour
         {
             ChangeAnimationState(PLAYER_IDLE);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _isDashButtonDown = true;
@@ -105,8 +103,8 @@ public class PlayerContoller : MonoBehaviour
         if (_currentAnimation == newState)
         {
             return;
-            
         }
+
         //play the animation
         _animator.Play(newState);
     }
