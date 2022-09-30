@@ -394,7 +394,6 @@ GameObject:
   - component: {fileID: 2093492101}
   - component: {fileID: 2093492103}
   - component: {fileID: 2093492104}
-  - component: {fileID: 2093492105}
   - component: {fileID: 2093492106}
   m_Layer: 0
   m_Name: Player
@@ -510,26 +509,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2093492105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093492099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59356d2ef68ce2e459b07331385a9dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBtwAttack: 0.3
-  attackRate: 3
-  attackPos: {fileID: 2030892747}
-  attackRange: 0.8
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  damage: 5
 --- !u!114 &2093492106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,4 +523,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   dashAmount: 10
+  attackPos: {fileID: 2030892747}
+  attackRange: 1.5
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 5
+  attackInterval: 1.5
+  taskCycle: 0
   _renderer: {fileID: 2093492101}
