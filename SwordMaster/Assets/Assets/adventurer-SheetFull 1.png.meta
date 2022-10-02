@@ -540,7 +540,7 @@ TextureImporter:
       213: 117544879343227465
     second: adventurer-SheetFull 1_178
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -561,6 +561,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -599,6 +600,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -626,6 +628,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -4408,6 +4422,186 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      adventurer-SheetFull 1_75: 8183667038973089192
+      adventurer-SheetFull 1_2: -2410307042976742711
+      adventurer-SheetFull 1_138: -7763319657922764139
+      adventurer-SheetFull 1_172: -5119056145707232354
+      adventurer-SheetFull 1_9: 2308191869489179660
+      adventurer-SheetFull 1_24: -301532559711899608
+      adventurer-SheetFull 1_13: -4249165861096933740
+      adventurer-SheetFull 1_169: -1087064657709789590
+      adventurer-SheetFull 1_49: 3646131017060371335
+      adventurer-SheetFull 1_88: 5117886760668877533
+      adventurer-SheetFull 1_140: 2090264510251675014
+      adventurer-SheetFull 1_116: 266794768226193295
+      adventurer-SheetFull 1_54: 3195054903926271816
+      adventurer-SheetFull 1_60: 7888803544506733155
+      adventurer-SheetFull 1_76: 4403936807360117288
+      adventurer-SheetFull 1_171: 2486438697088511694
+      adventurer-SheetFull 1_142: 8223264784296070826
+      adventurer-SheetFull 1_17: -6517536526925687592
+      adventurer-SheetFull 1_89: -3562033132707308710
+      adventurer-SheetFull 1_69: 4039319482189038284
+      adventurer-SheetFull 1_16: -6977205487669929745
+      adventurer-SheetFull 1_41: 6495485086699011710
+      adventurer-SheetFull 1_48: 9196290998251083482
+      adventurer-SheetFull 1_176: 3825113534480701504
+      adventurer-SheetFull 1_37: 4816758745214728622
+      adventurer-SheetFull 1_121: 1136020701648018363
+      adventurer-SheetFull 1_153: -7020393170459033180
+      adventurer-SheetFull 1_62: -6704281082329538988
+      adventurer-SheetFull 1_159: 38996492084887249
+      adventurer-SheetFull 1_141: 8504672771829728978
+      adventurer-SheetFull 1_23: 7278972699844690819
+      adventurer-SheetFull 1_139: -8101816267563382671
+      adventurer-SheetFull 1_126: 1197736671665982518
+      adventurer-SheetFull 1_106: -2456122221769565216
+      adventurer-SheetFull 1_10: 336291080885227051
+      adventurer-SheetFull 1_64: -2770102508418557120
+      adventurer-SheetFull 1_108: -8992705577251723802
+      adventurer-SheetFull 1_174: 6052442501735846230
+      adventurer-SheetFull 1_25: -1873072390303886383
+      adventurer-SheetFull 1_46: -1137695656057264300
+      adventurer-SheetFull 1_144: 5515246050073960933
+      adventurer-SheetFull 1_12: -3082943199307370962
+      adventurer-SheetFull 1_143: -934923125478450725
+      adventurer-SheetFull 1_165: 2607632809538915863
+      adventurer-SheetFull 1_92: -6004969810973051185
+      adventurer-SheetFull 1_55: 7918508833270015536
+      adventurer-SheetFull 1_152: 253681643365245648
+      adventurer-SheetFull 1_91: -8174715211431670087
+      adventurer-SheetFull 1_178: 117544879343227465
+      adventurer-SheetFull 1_70: 5850174385345761804
+      adventurer-SheetFull 1_6: -7258479186929961959
+      adventurer-SheetFull 1_146: 2510897280842766981
+      adventurer-SheetFull 1_72: -295655743563025553
+      adventurer-SheetFull 1_101: 8711585614391446500
+      adventurer-SheetFull 1_123: -1091924828972881940
+      adventurer-SheetFull 1_57: -30027112844258626
+      adventurer-SheetFull 1_65: -3490201352347052676
+      adventurer-SheetFull 1_163: -3511207689357330518
+      adventurer-SheetFull 1_18: -6638169806505848614
+      adventurer-SheetFull 1_47: -8556584673366135478
+      adventurer-SheetFull 1_137: -5442972094032683437
+      adventurer-SheetFull 1_50: -4734289078481199542
+      adventurer-SheetFull 1_84: 963707584436509524
+      adventurer-SheetFull 1_100: 7123609745471500739
+      adventurer-SheetFull 1_11: -2815840811342394628
+      adventurer-SheetFull 1_73: -6484215831966004427
+      adventurer-SheetFull 1_130: -966481351412127171
+      adventurer-SheetFull 1_149: 2161715068235210736
+      adventurer-SheetFull 1_164: -8703353095112071681
+      adventurer-SheetFull 1_31: 8549220159156990349
+      adventurer-SheetFull 1_34: -5347596517641698952
+      adventurer-SheetFull 1_29: -7657231473723834089
+      adventurer-SheetFull 1_105: 3263111588910386321
+      adventurer-SheetFull 1_114: -9069514538893653998
+      adventurer-SheetFull 1_162: -1447032490101767397
+      adventurer-SheetFull 1_155: -7488253571308221770
+      adventurer-SheetFull 1_161: -9014943331628614727
+      adventurer-SheetFull 1_39: -8546397518276846508
+      adventurer-SheetFull 1_124: -7791049778301468199
+      adventurer-SheetFull 1_166: -769128586555878555
+      adventurer-SheetFull 1_97: 5354601188134520742
+      adventurer-SheetFull 1_87: 6184340076519666800
+      adventurer-SheetFull 1_15: 8018422085909799629
+      adventurer-SheetFull 1_148: -8086965841975073775
+      adventurer-SheetFull 1_168: -6244385963544483562
+      adventurer-SheetFull 1_20: -2892882446555994023
+      adventurer-SheetFull 1_38: 3066971368737712521
+      adventurer-SheetFull 1_14: -2689165422502558762
+      adventurer-SheetFull 1_56: -3177123169283921493
+      adventurer-SheetFull 1_102: 5958809165543067979
+      adventurer-SheetFull 1_80: 3934235111351119354
+      adventurer-SheetFull 1_99: -4849013420134472229
+      adventurer-SheetFull 1_136: 1950566772159109161
+      adventurer-SheetFull 1_145: -4554107255783524059
+      adventurer-SheetFull 1_117: -7532261024800326146
+      adventurer-SheetFull 1_96: -9030617571245941928
+      adventurer-SheetFull 1_68: -162378821404470493
+      adventurer-SheetFull 1_150: 2792321640974779783
+      adventurer-SheetFull 1_110: -8863271630246779407
+      adventurer-SheetFull 1_86: -3908309980476314599
+      adventurer-SheetFull 1_1: 8765665782377695818
+      adventurer-SheetFull 1_118: 7380962080309638536
+      adventurer-SheetFull 1_94: 5027518885467450776
+      adventurer-SheetFull 1_19: -5004767055925131210
+      adventurer-SheetFull 1_170: 4310030537516586804
+      adventurer-SheetFull 1_4: 4909017538569802571
+      adventurer-SheetFull 1_111: 563350160344106811
+      adventurer-SheetFull 1_127: -1352586694777001043
+      adventurer-SheetFull 1_27: 9139985414150866859
+      adventurer-SheetFull 1_135: -1760570691281963378
+      adventurer-SheetFull 1_112: -8670400016072777445
+      adventurer-SheetFull 1_63: -4888593070042908297
+      adventurer-SheetFull 1_95: 4335416818721020590
+      adventurer-SheetFull 1_71: 4054011261714150927
+      adventurer-SheetFull 1_42: 3810284176099690428
+      adventurer-SheetFull 1_33: 8042268582819045491
+      adventurer-SheetFull 1_83: 7469333959233506189
+      adventurer-SheetFull 1_3: 5634511536173535510
+      adventurer-SheetFull 1_51: -5775841756530533632
+      adventurer-SheetFull 1_0: -2752099545287748801
+      adventurer-SheetFull 1_147: -8006305454344036467
+      adventurer-SheetFull 1_125: -6889096469609562672
+      adventurer-SheetFull 1_167: 8962267672783509500
+      adventurer-SheetFull 1_22: 4439417195754361976
+      adventurer-SheetFull 1_103: 2106403147417419504
+      adventurer-SheetFull 1_154: -4234138092593447325
+      adventurer-SheetFull 1_67: -2766702613877793087
+      adventurer-SheetFull 1_81: 2828159432028939782
+      adventurer-SheetFull 1_120: 4592469070420279150
+      adventurer-SheetFull 1_173: 8588302757370102624
+      adventurer-SheetFull 1_30: 4627672833352884551
+      adventurer-SheetFull 1_79: 1430463976207219016
+      adventurer-SheetFull 1_98: -2870072369125977568
+      adventurer-SheetFull 1_131: 6176859068698806251
+      adventurer-SheetFull 1_28: -2620634775059407833
+      adventurer-SheetFull 1_58: 9017485170938943443
+      adventurer-SheetFull 1_129: -250589849560038680
+      adventurer-SheetFull 1_78: 3370406723775359353
+      adventurer-SheetFull 1_115: 2471744108164141380
+      adventurer-SheetFull 1_151: 5744371545991797122
+      adventurer-SheetFull 1_160: 6868986945630874377
+      adventurer-SheetFull 1_21: -2147688605954370125
+      adventurer-SheetFull 1_35: 2554437689782164211
+      adventurer-SheetFull 1_175: -1631488635464861346
+      adventurer-SheetFull 1_32: 2728469848159136670
+      adventurer-SheetFull 1_82: 896218539051768945
+      adventurer-SheetFull 1_156: 8641025713120117034
+      adventurer-SheetFull 1_177: 9102694947344645572
+      adventurer-SheetFull 1_90: -285020687399409977
+      adventurer-SheetFull 1_66: -3288557333073439447
+      adventurer-SheetFull 1_26: -1581441398686626768
+      adventurer-SheetFull 1_44: 5641127959681988294
+      adventurer-SheetFull 1_107: -6315801553723713867
+      adventurer-SheetFull 1_43: 7076223113090085612
+      adventurer-SheetFull 1_52: 7995801510259883576
+      adventurer-SheetFull 1_74: -3310774474613535593
+      adventurer-SheetFull 1_158: -1445204785440050027
+      adventurer-SheetFull 1_109: 4840261646401586335
+      adventurer-SheetFull 1_128: 8851433961914494031
+      adventurer-SheetFull 1_8: -4391924286479882853
+      adventurer-SheetFull 1_40: -6002494788072078542
+      adventurer-SheetFull 1_157: 5378579839360730259
+      adventurer-SheetFull 1_85: 2369686247201870544
+      adventurer-SheetFull 1_104: -300401808427097124
+      adventurer-SheetFull 1_113: -1296975569902959026
+      adventurer-SheetFull 1_59: 8210214679046543955
+      adventurer-SheetFull 1_53: 9119711432497539281
+      adventurer-SheetFull 1_119: -5710086374730831173
+      adventurer-SheetFull 1_77: -3082864648654933082
+      adventurer-SheetFull 1_5: -4376346046933704894
+      adventurer-SheetFull 1_133: 8419348029566359758
+      adventurer-SheetFull 1_122: -5915119221659931149
+      adventurer-SheetFull 1_132: -1373382153328836662
+      adventurer-SheetFull 1_134: 6678542495839443912
+      adventurer-SheetFull 1_36: 4065804199409220131
+      adventurer-SheetFull 1_61: -718914730489046255
+      adventurer-SheetFull 1_45: 574299430375648951
+      adventurer-SheetFull 1_7: 2700435866749877692
+      adventurer-SheetFull 1_93: 3262430186420985216
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

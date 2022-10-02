@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3f39106-04a9-4b39-8933-a15231d2597b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SwordMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SwordMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Idle.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerContoller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerContoller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d3f39106-04a9-4b39-8933-a15231d2597b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +28,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\2020.3.18f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\2021.3.11f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Users\Msi\SwordMaster\SwordMaster\SwordMaster -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Users\Msi\SwordMaster\SwordMaster\SwordMaster" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -78,6 +71,9 @@
       <workItem from="1664527420948" duration="1454000" />
       <workItem from="1664534669194" duration="224000" />
       <workItem from="1664535092596" duration="2203000" />
+      <workItem from="1664552461060" duration="4575000" />
+      <workItem from="1664727608359" duration="1516000" />
+      <workItem from="1664729200669" duration="1581000" />
     </task>
     <servers />
   </component>
