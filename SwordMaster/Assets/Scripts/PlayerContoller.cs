@@ -29,8 +29,7 @@ public class PlayerContoller : MonoBehaviour
     private bool _canMove;
     private float _attackTimer;
     private bool _canAttack = true;
-    private float moveX = 0f;
-    private float moveY = 0f;
+    private int attackNum = 0;
 
     [SerializeField] private SpriteRenderer _renderer;
 
@@ -53,28 +52,26 @@ public class PlayerContoller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Attack();
-            
+            taskCycle = TaskCycles.Attack;
         }
+        else
+        {
+            taskCycle = TaskCycles.Move;
+        }
+
+        switch (taskCycle)
+        {
+            case TaskCycles.Move:
         
-
-        HandleControl();
-
-
-        // switch (taskCycle)
-        // {
-        //     case TaskCycles.Move:
-        //
-        //         HandleControl();
-        //         break;
-        //
-        //     case TaskCycles.Attack:
-        //         Debug.Log("task cycle attack");
-        //         Attack();
-        //         break;
-        // }
+                HandleControl();
+                break;
+        
+            case TaskCycles.Attack:
+                Debug.Log("task cycle attack");
+                Attack();
+                break;
+        }
     }
-
     // todo: add roll and collider to dash 
     private void FixedUpdate()
     {
@@ -88,19 +85,20 @@ public class PlayerContoller : MonoBehaviour
             _isDashButtonDown = false;
         }
     }
-
-
     private void HandleControl()
     {
+     float moveX = 0f;
+     float moveY = 0f;
         if (_canMove == true)
         {
-           
+            Debug.Log("canMove True");
             //todo:find a better way to use flipX
 
             if (Input.GetKey(KeyCode.W))
             {
                 moveY = +1f;
                 _renderer.flipX = !true;
+                
             }
 
             if (Input.GetKey(KeyCode.S))
@@ -139,8 +137,7 @@ public class PlayerContoller : MonoBehaviour
         }
         else
         {
-            moveX = 0;
-            moveY = 0;
+            _moveDir = new Vector3(0, 0).normalized;
         }
     }
 
@@ -158,13 +155,12 @@ public class PlayerContoller : MonoBehaviour
 
     private void Attack()
     {
-         
         _canMove = false;
         //todo:Switch Case / Enum for attack animations
-        int attackNum = 0;
-        Debug.Log("attack call");
+       // Debug.Log("attack call");
         if (_canAttack)
-        {
+        { 
+           
             _attackTimer += Time.deltaTime;
             if (_attackTimer >= attackInterval)
             {
@@ -172,33 +168,37 @@ public class PlayerContoller : MonoBehaviour
                 _canAttack = true;
             }
 
-            attackNum += attackNum;
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
                 enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
             }
 
-            ChangeAnimationState(PLAYER_ATTACK1);
+            //ChangeAnimationState(PLAYER_ATTACK1);
 
             //todo : IENUM Animation Controller all animations must end before another starts.
 
-            // if (attackNum == 0)
-            // {
-            //      ChangeAnimationState(PLAYER_ATTACK1);
-            //      
-            // }
-            // else if (attackNum == 1)
-            // {
-            //     ChangeAnimationState(PLAYER_ATTACK2);
-            //     
-            // }
-            // else
-            // {
-            //     ChangeAnimationState(PLAYER_ATTACK3);
-            //     attackNum = 0;
-            // }
+            attackNum++;
+            
+            if (attackNum == 1)
+            {
+                 ChangeAnimationState(PLAYER_ATTACK1);
+
+                 Debug.Log("attack1");
+            } 
+            if (attackNum == 2)
+            {
+                ChangeAnimationState(PLAYER_ATTACK2);
+                Debug.Log("attack2");
+
+            }
+
+            if (attackNum == 3)
+            {
+                ChangeAnimationState(PLAYER_ATTACK3);
+                attackNum = 0;
+            }
             Invoke("CanMove", attackDelay);
         }
     }
