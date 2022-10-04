@@ -50,6 +50,14 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
+        
+        _attackTimer  += Time.deltaTime;
+        if (_attackTimer >= attackInterval)
+        {
+            _attackTimer = 0;
+            _canAttack = true;
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             taskCycle = TaskCycles.Attack;
@@ -155,18 +163,12 @@ public class PlayerContoller : MonoBehaviour
 
     private void Attack()
     {
-        _canMove = false;
         //todo:Switch Case / Enum for attack animations
        // Debug.Log("attack call");
-        if (_canAttack)
-        { 
-           
-            _attackTimer += Time.deltaTime;
-            if (_attackTimer >= attackInterval)
-            {
-                _attackTimer = 0;
-                _canAttack = true;
-            }
+          
+        if (_canAttack == true)
+        {
+            _canMove = false;
 
             //Debug.Log("Hit");
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
@@ -200,6 +202,7 @@ public class PlayerContoller : MonoBehaviour
                 attackNum = 0;
             }
             Invoke("CanMove", attackDelay);
+            _canAttack = false;
         }
     }
 

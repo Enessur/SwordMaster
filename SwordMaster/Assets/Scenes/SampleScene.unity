@@ -207,6 +207,37 @@ Transform:
   m_Father: {fileID: 2093492102}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &724362809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724362810}
+  m_Layer: 0
+  m_Name: PatrolPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &724362810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724362809}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 923238082}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923238079
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +252,7 @@ GameObject:
   - component: {fileID: 923238084}
   - component: {fileID: 923238083}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +270,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4c8383a016eb247b8d8ac03196697b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskCycleEnemy: 0
+  chaseSpeed: 5
+  minX: -5
+  maxX: 5
+  minY: -5
+  maxY: 5
+  startWaitTime: 1
+  chasingDistance: 5
+  killDistance: 0
+  spriteRenderer: {fileID: 0}
+  oneTime: 0
+  moveSpot: {fileID: 724362810}
   health: 10
-  speed: 0
+  speed: 3
 --- !u!212 &923238081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -304,7 +347,8 @@ Transform:
   m_LocalPosition: {x: 2.12, y: -0.15687019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 724362810}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,7 +445,7 @@ GameObject:
   - component: {fileID: 2093492106}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -536,7 +580,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damage: 5
-  attackInterval: 1.5
+  attackInterval: 0.65
   taskCycle: 0
   attackDelay: 0.5
   _renderer: {fileID: 2093492101}
