@@ -179,7 +179,7 @@ public class PlayerContoller : MonoBehaviour
 
             //ChangeAnimationState(PLAYER_ATTACK1);
 
-            //todo : IENUM Animation Controller all animations must end before another starts.
+            //todo : Animation Event listener when animation ends it returns bool to enable another attack
 
             attackNum++;
             
