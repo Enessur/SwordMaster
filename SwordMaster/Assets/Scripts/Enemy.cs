@@ -101,6 +101,6 @@ public class Enemy : MonoBehaviour
 
     public void FlipSprite(Transform dest)
     {
-        spriteRenderer.flipX = !(transform.position.x - dest.position.x < 0);
+        spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
     }
 }

@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CodeMonkey;
 using UnityEngine;
-
+using CodeMonkey.Utils;
 public class PlayerContoller : MonoBehaviour
 {
     public enum TaskCycles
@@ -19,7 +20,8 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float attackInterval = 1.5f;
     [SerializeField] private TaskCycles taskCycle;
-    [SerializeField] private float attackDelay = 0.3f;
+    [SerializeField] private SpriteRenderer _renderer;
+    
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -31,7 +33,6 @@ public class PlayerContoller : MonoBehaviour
     private bool _canAttack = true;
     private int attackNum = 0;
 
-    [SerializeField] private SpriteRenderer _renderer;
 
     //Animation States
     const string PLAYER_IDLE = "Idle";
@@ -161,21 +162,36 @@ public class PlayerContoller : MonoBehaviour
         _animator.Play(newState);
     }
 
+    private void hit()
+    {
+        Debug.Log("Hit");
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+        }
+    }
     private void Attack()
     {
-        //todo:Switch Case / Enum for attack animations
-       // Debug.Log("attack call");
-          
+        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 attackDir = (mousePosition - transform.position);
+        CMDebug.TextPopupMouse("" + attackDir);
+        if (attackDir.x < 0)
+        {
+            _renderer.flipX = true;
+            attackPos.localScale = new Vector3(-1f, 0f, 0f);
+        }
+        else
+        {
+            _renderer.flipX = !true;
+            attackPos.localScale = new Vector3(10f, 0f, 0f);
+        }
+        
         if (_canAttack == true)
         {
             _canMove = false;
 
-            //Debug.Log("Hit");
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-            for (int i = 0; i < enemiesToDamage.Length; i++)
-            {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
-            }
+            
 
             //ChangeAnimationState(PLAYER_ATTACK1);
 
@@ -187,12 +203,12 @@ public class PlayerContoller : MonoBehaviour
             {
                  ChangeAnimationState(PLAYER_ATTACK1);
 
-                 Debug.Log("attack1");
+                // Debug.Log("attack1");
             } 
             if (attackNum == 2)
             {
                 ChangeAnimationState(PLAYER_ATTACK2);
-                Debug.Log("attack2");
+              //  Debug.Log("attack2");
 
             }
 
@@ -201,7 +217,7 @@ public class PlayerContoller : MonoBehaviour
                 ChangeAnimationState(PLAYER_ATTACK3);
                 attackNum = 0;
             }
-            Invoke("CanMove", attackDelay);
+         
             _canAttack = false;
         }
     }
