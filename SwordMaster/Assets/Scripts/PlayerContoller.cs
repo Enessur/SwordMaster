@@ -47,17 +47,14 @@ public class PlayerContoller : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _canMove = true;
+        _canAttack = true;
     }
 
     void Update()
     {
         
-        // _attackTimer  += Time.deltaTime;
-        // if (_attackTimer >= attackInterval)
-        // {
-        //     _attackTimer = 0;
-        //     _canAttack = true;
-        // }
+        
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -76,8 +73,7 @@ public class PlayerContoller : MonoBehaviour
                 break;
         
             case TaskCycles.Attack:
-               // Debug.Log("task cycle attack");
-                Attack();
+               Attack();
                 break;
         }
     }
@@ -100,7 +96,6 @@ public class PlayerContoller : MonoBehaviour
      float moveY = 0f;
         if (_canMove == true)
         {
-            //Debug.Log("canMove True");
             //todo:find a better way to use flipX
 
             if (Input.GetKey(KeyCode.W))
@@ -192,24 +187,16 @@ public class PlayerContoller : MonoBehaviour
             _canMove = false;
 
             
-
-            //ChangeAnimationState(PLAYER_ATTACK1);
-
-            //todo : Animation Event listener when animation ends it returns bool to enable another attack
-
             _attackNum++;
             
             if (_attackNum == 1)
             {
                  ChangeAnimationState(PLAYER_ATTACK1);
-
-                // Debug.Log("attack1");
+                 
             } 
             if (_attackNum == 2)
             {
                 ChangeAnimationState(PLAYER_ATTACK2);
-              //  Debug.Log("attack2");
-
             }
 
             if (_attackNum == 3)

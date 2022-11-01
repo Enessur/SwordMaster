@@ -8,10 +8,11 @@ public class Enemy : MonoBehaviour
     {
         Chase,
         Patrol,
+        Attack,
         Stop
     }
-    
-    
+
+
     [SerializeField] private TaskCycleEnemy taskCycleEnemy;
     [SerializeField] private float chaseSpeed;
     [SerializeField] private float minX;
@@ -28,21 +29,21 @@ public class Enemy : MonoBehaviour
     private float _patrolTimer;
     private string _currentAnimation;
     private Animator _animator;
-    
+
     public int health;
     public float speed;
-    
+
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
-    
+    const string ENEMY_ATTACK = "Attack";
+
     void Start()
     {
         oneTime = false;
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
-        
     }
 
     void Update()
@@ -58,9 +59,9 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _target.position) < killDistance)
         {
-            taskCycleEnemy = TaskCycleEnemy.Stop;
+            taskCycleEnemy = TaskCycleEnemy.Attack;
         }
-        
+
         switch (taskCycleEnemy)
         {
             case TaskCycleEnemy.Chase:
@@ -79,10 +80,11 @@ public class Enemy : MonoBehaviour
             case TaskCycleEnemy.Stop:
                 ChangeAnimationState(ENEMY_IDLE);
                 GameOver();
-
+                break;
+            case TaskCycleEnemy.Attack:
+                ChangeAnimationState(ENEMY_ATTACK);
                 break;
         }
-        
     }
 
     public void TakeDamage(int damage)
@@ -90,6 +92,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         Debug.Log("Damage Taken");
     }
+
     private void PatrolPosition()
     {
         _patrolTimer += Time.deltaTime;
@@ -112,8 +115,8 @@ public class Enemy : MonoBehaviour
     {
         spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
     }
-    
-    
+
+
     void ChangeAnimationState(string newState)
     {
         //stop the same animation from interrupting itself
@@ -125,5 +128,4 @@ public class Enemy : MonoBehaviour
         //play the animation
         _animator.Play(newState);
     }
-    
 }
