@@ -18,7 +18,7 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask whatIsEnemies;
     [SerializeField] private int damage;
-    [SerializeField] private float attackInterval = 1.5f;
+    // [SerializeField] private float attackInterval = 1.5f;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
     
@@ -31,7 +31,7 @@ public class PlayerContoller : MonoBehaviour
     private bool _canMove;
     private float _attackTimer;
     private bool _canAttack = true;
-    private int attackNum = 0;
+    private int _attackNum = 0;
 
 
     //Animation States
@@ -52,12 +52,12 @@ public class PlayerContoller : MonoBehaviour
     void Update()
     {
         
-        _attackTimer  += Time.deltaTime;
-        if (_attackTimer >= attackInterval)
-        {
-            _attackTimer = 0;
-            _canAttack = true;
-        }
+        // _attackTimer  += Time.deltaTime;
+        // if (_attackTimer >= attackInterval)
+        // {
+        //     _attackTimer = 0;
+        //     _canAttack = true;
+        // }
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -76,7 +76,7 @@ public class PlayerContoller : MonoBehaviour
                 break;
         
             case TaskCycles.Attack:
-                Debug.Log("task cycle attack");
+               // Debug.Log("task cycle attack");
                 Attack();
                 break;
         }
@@ -100,7 +100,7 @@ public class PlayerContoller : MonoBehaviour
      float moveY = 0f;
         if (_canMove == true)
         {
-            Debug.Log("canMove True");
+            //Debug.Log("canMove True");
             //todo:find a better way to use flipX
 
             if (Input.GetKey(KeyCode.W))
@@ -197,25 +197,25 @@ public class PlayerContoller : MonoBehaviour
 
             //todo : Animation Event listener when animation ends it returns bool to enable another attack
 
-            attackNum++;
+            _attackNum++;
             
-            if (attackNum == 1)
+            if (_attackNum == 1)
             {
                  ChangeAnimationState(PLAYER_ATTACK1);
 
                 // Debug.Log("attack1");
             } 
-            if (attackNum == 2)
+            if (_attackNum == 2)
             {
                 ChangeAnimationState(PLAYER_ATTACK2);
               //  Debug.Log("attack2");
 
             }
 
-            if (attackNum == 3)
+            if (_attackNum == 3)
             {
                 ChangeAnimationState(PLAYER_ATTACK3);
-                attackNum = 0;
+                _attackNum = 0;
             }
          
             _canAttack = false;
@@ -231,5 +231,10 @@ public class PlayerContoller : MonoBehaviour
     private void CanMove()
     {
         _canMove = true;
+    }
+
+    private void AttackInterval()
+    {
+        _canAttack = true;
     }
 }
