@@ -9,35 +9,41 @@ public class Enemy : MonoBehaviour
         Chase,
         Patrol,
         Attack,
+        CastSpell,
         Stop
     }
-
-
+    
     [SerializeField] private TaskCycleEnemy taskCycleEnemy;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject shadowRb;
+    [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
-    [SerializeField] public float startWaitTime = 1f;
     [SerializeField] private float chasingDistance;
     [SerializeField] private float killDistance;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private float castDistanceMax;
+    [SerializeField] private float castDistanceMin;
     [SerializeField] private bool oneTime;
+    
     public Transform moveSpot;
+    public int health;
+    public float speed;
+   
     private Transform _target;
     private float _patrolTimer;
     private string _currentAnimation;
     private Animator _animator;
-
-    public int health;
-    public float speed;
+    private bool _canAttack = true;
+    private bool _canMove = true;
 
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
-    const string ENEMY_ATTACK = "Attack";
-
+    const string ENEMY_ATTACK = "Attack"; 
+    const string ENEMY_CASTSPELL = "SpellCast";
     void Start()
     {
         oneTime = false;
@@ -48,13 +54,21 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (_canMove == true)
+        {
+            
         if (Vector2.Distance(transform.position, _target.position) < chasingDistance)
         {
             taskCycleEnemy = TaskCycleEnemy.Chase;
+        } 
+        else if ((Vector2.Distance(transform.position, _target.position)>castDistanceMax) && (Vector2.Distance(transform.position,_target.position)<castDistanceMin))
+        {
+            taskCycleEnemy = TaskCycleEnemy.CastSpell;
         }
         else
         {
             taskCycleEnemy = TaskCycleEnemy.Patrol;
+        }
         }
 
         if (Vector2.Distance(transform.position, _target.position) < killDistance)
@@ -82,7 +96,10 @@ public class Enemy : MonoBehaviour
                 GameOver();
                 break;
             case TaskCycleEnemy.Attack:
-                ChangeAnimationState(ENEMY_ATTACK);
+                Attack();
+                break;
+            case TaskCycleEnemy.CastSpell:
+                ChangeAnimationState(ENEMY_CASTSPELL);
                 break;
         }
     }
@@ -101,6 +118,16 @@ public class Enemy : MonoBehaviour
         _patrolTimer = 0;
 
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+
+    public void Attack()
+    {
+        if (_canAttack == true)
+        {
+            _canMove = false;
+            ChangeAnimationState(ENEMY_ATTACK);
+            _canAttack = false;
+        }
     }
 
     private void GameOver()
@@ -128,4 +155,18 @@ public class Enemy : MonoBehaviour
         //play the animation
         _animator.Play(newState);
     }
+    private void AttackInterval()
+    {
+        _canAttack = true;
+    }
+    private void CanMove()
+    {
+        _canMove = true;
+    }
+
+    private void ShadowAttack()
+    {
+        Instantiate(shadowRb, _target.position, _target.rotation);
+    }
+    
 }

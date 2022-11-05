@@ -9729,19 +9729,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskCycleEnemy: 0
-  chaseSpeed: 5
+  spriteRenderer: {fileID: 923238081}
+  shadowRb: {fileID: 5307093909892084894, guid: 38065be1c6bf70146bf57d33888ba76e, type: 3}
+  startWaitTime: 1
+  chaseSpeed: 4
   minX: -5
   maxX: 5
   minY: -5
   maxY: 5
-  startWaitTime: 1
   chasingDistance: 5
-  killDistance: 2
-  spriteRenderer: {fileID: 923238081}
+  killDistance: 1
+  castDistanceMax: 5
+  castDistanceMin: 9
   oneTime: 0
   moveSpot: {fileID: 724362810}
   health: 10
-  speed: 3
+  speed: 2.5
 --- !u!212 &923238081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10190,7 +10193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  dashAmount: 10
+  dashAmount: 3
   attackPos: {fileID: 2030892747}
   attackRange: 0.87
   whatIsEnemies:

@@ -18,7 +18,6 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask whatIsEnemies;
     [SerializeField] private int damage;
-    // [SerializeField] private float attackInterval = 1.5f;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
     
