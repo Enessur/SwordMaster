@@ -31,7 +31,7 @@ public class PlayerContoller : MonoBehaviour
     private float _attackTimer;
     private bool _canAttack = true;
     private int _attackNum = 0;
-
+    private Shake _shake;
 
     //Animation States
     const string PLAYER_IDLE = "Idle";
@@ -43,6 +43,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void Start()
     {
+        _shake = GameObject.FindWithTag("ScreenShake").GetComponent<Shake>();
         _rb = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
@@ -158,9 +159,11 @@ public class PlayerContoller : MonoBehaviour
     private void hit()
     {
         Debug.Log("Hit");
+        
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
+            _shake.CamShake();
             enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
         }
     }

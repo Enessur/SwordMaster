@@ -10,9 +10,10 @@ public class Enemy : MonoBehaviour
         Patrol,
         Attack,
         CastSpell,
+        Death,
         Stop
     }
-    
+
     [SerializeField] private TaskCycleEnemy taskCycleEnemy;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject shadowRb;
@@ -27,11 +28,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float castDistanceMax;
     [SerializeField] private float castDistanceMin;
     [SerializeField] private bool oneTime;
-    
+
     public Transform moveSpot;
     public int health;
     public float speed;
-   
+
     private Transform _target;
     private float _patrolTimer;
     private string _currentAnimation;
@@ -42,8 +43,11 @@ public class Enemy : MonoBehaviour
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
-    const string ENEMY_ATTACK = "Attack"; 
+    const string ENEMY_ATTACK = "Attack";
     const string ENEMY_CASTSPELL = "SpellCast";
+    const string ENEMY_DEATH = "Death";
+    const string ENEMY_TAKEDAMAGE = "TakeDamage";
+
     void Start()
     {
         oneTime = false;
@@ -54,21 +58,26 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            taskCycleEnemy = TaskCycleEnemy.Death;
+        }
+
         if (_canMove == true)
         {
-            
-        if (Vector2.Distance(transform.position, _target.position) < chasingDistance)
-        {
-            taskCycleEnemy = TaskCycleEnemy.Chase;
-        } 
-        else if ((Vector2.Distance(transform.position, _target.position)>castDistanceMax) && (Vector2.Distance(transform.position,_target.position)<castDistanceMin))
-        {
-            taskCycleEnemy = TaskCycleEnemy.CastSpell;
-        }
-        else
-        {
-            taskCycleEnemy = TaskCycleEnemy.Patrol;
-        }
+            if (Vector2.Distance(transform.position, _target.position) < chasingDistance)
+            {
+                taskCycleEnemy = TaskCycleEnemy.Chase;
+            }
+            else if ((Vector2.Distance(transform.position, _target.position) > castDistanceMax) &&
+                     (Vector2.Distance(transform.position, _target.position) < castDistanceMin))
+            {
+                taskCycleEnemy = TaskCycleEnemy.CastSpell;
+            }
+            else
+            {
+                taskCycleEnemy = TaskCycleEnemy.Patrol;
+            }
         }
 
         if (Vector2.Distance(transform.position, _target.position) < killDistance)
@@ -101,12 +110,17 @@ public class Enemy : MonoBehaviour
             case TaskCycleEnemy.CastSpell:
                 ChangeAnimationState(ENEMY_CASTSPELL);
                 break;
+            case TaskCycleEnemy.Death:
+                ChangeAnimationState(ENEMY_DEATH);
+                break;
+            
         }
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+        ChangeAnimationState(ENEMY_TAKEDAMAGE);
         Debug.Log("Damage Taken");
     }
 
@@ -133,7 +147,7 @@ public class Enemy : MonoBehaviour
     private void GameOver()
     {
         if (oneTime) return;
-        // SoundManager.Instance.PlaySound("dogBark");
+        // SoundManager.Instance.PlaySound("");
         // SceneManager.Instance.LoseGame();
         oneTime = true;
     }
@@ -155,10 +169,12 @@ public class Enemy : MonoBehaviour
         //play the animation
         _animator.Play(newState);
     }
+
     private void AttackInterval()
     {
         _canAttack = true;
     }
+
     private void CanMove()
     {
         _canMove = true;
@@ -168,5 +184,15 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(shadowRb, _target.position, _target.rotation);
     }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
     
+    private void Cleanse()
+    {
+        _canAttack = true;
+        _canMove = true;
+    }
 }
