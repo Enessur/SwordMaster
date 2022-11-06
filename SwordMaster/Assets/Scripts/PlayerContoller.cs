@@ -101,7 +101,6 @@ public class PlayerContoller : MonoBehaviour
             {
                 moveY = +1f;
                 _renderer.flipX = !true;
-                
             }
 
             if (Input.GetKey(KeyCode.S))
@@ -169,16 +168,17 @@ public class PlayerContoller : MonoBehaviour
     {
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
         Vector3 attackDir = (mousePosition - transform.position);
-        CMDebug.TextPopupMouse("" + attackDir);
+       // CMDebug.TextPopupMouse("" + attackDir);
         if (attackDir.x < 0)
         {
             _renderer.flipX = true;
-            attackPos.localScale = new Vector3(-1f, 0f, 0f);
+            attackPos.position = transform.position + new Vector3(-1.4f, 0f, 0f);
+            
         }
         else
         {
             _renderer.flipX = !true;
-            attackPos.localScale = new Vector3(10f, 0f, 0f);
+            attackPos.position = transform.position +new Vector3(+1.4f, 0f, 0f);
         }
         
         if (_canAttack == true)

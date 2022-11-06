@@ -120,9 +120,9 @@ public class Enemy : MonoBehaviour
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 
-    public void Attack()
+    private void Attack()
     {
-        if (_canAttack == true)
+        if (_canAttack)
         {
             _canMove = false;
             ChangeAnimationState(ENEMY_ATTACK);
@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
         oneTime = true;
     }
 
-    public void FlipSprite(Transform dest)
+    private void FlipSprite(Transform dest)
     {
         spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
     }
