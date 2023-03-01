@@ -15,7 +15,7 @@ public class FlyingSword : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float chaseSpeed;
     [SerializeField] private float swordPatrolRange = 10f;
-    
+    [SerializeField] private float attackRange = 2f;
     private Transform _target;
     private Transform _enemyTarget;
    
@@ -32,11 +32,19 @@ public class FlyingSword : MonoBehaviour
     private float _randomY;
     private float currentAngle;
     
+    //Animation
+    private string _currentAnimation;
+    private Animator _animator;
+    // private bool _canAttack = true;
+    // private bool _canChase = true;
+    const string ATTACK_1 = "SwordAttack";
+    
     
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _enemyTarget = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+        _animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -59,7 +67,6 @@ public class FlyingSword : MonoBehaviour
         {
             taskCycleSword = TaskCycleSword.Chase;
         }
-
         else
         {
             taskCycleSword = TaskCycleSword.Follow;
@@ -67,6 +74,7 @@ public class FlyingSword : MonoBehaviour
         switch (taskCycleSword)
         {
             case TaskCycleSword.Follow:
+                
                 
                 transform.Rotate(0f, 0f, _rotationSpeed * Time.deltaTime);
                 currentAngle += _rotationSpeed * Time.deltaTime;
@@ -90,29 +98,60 @@ public class FlyingSword : MonoBehaviour
                 break;
 
             case TaskCycleSword.Chase:
+                // if (_canChase)
+                // {
+                    Vector2 enemyPosition = new Vector2(_enemyTarget.position.x, _enemyTarget.position.y);
+                    if (enemyPosition.x - swordPosition.x > 0)
+                    {
+                        _followPosition = enemyPosition + _offsetLeft;
+                    }
+                    else
+                    {
+                        _followPosition = enemyPosition + _offsetRight;
+                    }
+                    direction = (_followPosition - swordPosition);
+                    newPosition = swordPosition + direction * chaseSpeed * Time.deltaTime;
+                    transform.position = new Vector2(newPosition.x, newPosition.y);
+                    if (_enemyTarget == null)
+                    {
+                        taskCycleSword = TaskCycleSword.Follow;
+                    }
 
-                Vector2 enemyPosition = new Vector2(_enemyTarget.position.x, _enemyTarget.position.y);
-                if (enemyPosition.x - swordPosition.x > 0)
-                {
-                    _followPosition = enemyPosition + _offsetLeft;
-                }
-                else
-                {
-                    _followPosition = enemyPosition + _offsetRight;
-                }
-                direction = (_followPosition - swordPosition);
-                newPosition = swordPosition + direction * chaseSpeed * Time.deltaTime;
-                transform.position = new Vector2(newPosition.x, newPosition.y);
-                if (_enemyTarget == null)
-                {
-                    taskCycleSword = TaskCycleSword.Follow;
-                }
-                
+                    // if ((Vector2.Distance(_enemyTarget.position, swordPosition) > attackRange))
+                    // {
+                    //     Debug.Log("ee saldır artık");
+                    //     _canAttack = true;
+                    //     taskCycleSword = TaskCycleSword.Attack;
+                    //
+                    // }
+                // }
                 break;
                 
                 case TaskCycleSword.Attack:
+                    // _canChase = false;
+                    //
+                    // if (_canAttack)
+                    // {
+                    // ChangeAnimationState(ATTACK_1);
+                    //
+                    // _canAttack = false;
+                    // _canChase = true;
+                    // }
                     break;
                 
+        }
+        
+        
+        void ChangeAnimationState(string newState)
+        {
+            //stop the same animation from interrupting itself
+            if (_currentAnimation == newState)
+            {
+                return;
+            }
+
+            //play the animation
+            _animator.Play(newState);
         }
     }
 }
