@@ -58,31 +58,33 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (health <= 0)
+        if (health >= 1)
+        {
+            if (_canMove == true)
+            {
+                if (Vector2.Distance(transform.position, _target.position) < chasingDistance)
+                {
+                    taskCycleEnemy = TaskCycleEnemy.Chase;
+                }
+                else if ((Vector2.Distance(transform.position, _target.position) > castDistanceMax) &&
+                         (Vector2.Distance(transform.position, _target.position) < castDistanceMin))
+                {
+                    taskCycleEnemy = TaskCycleEnemy.CastSpell;
+                }
+                else
+                {
+                    taskCycleEnemy = TaskCycleEnemy.Patrol;
+                }
+            }
+
+            if (Vector2.Distance(transform.position, _target.position) < killDistance)
+            {
+                taskCycleEnemy = TaskCycleEnemy.Attack;
+            }
+        }
+        else
         {
             taskCycleEnemy = TaskCycleEnemy.Death;
-        }
-
-        if (_canMove == true)
-        {
-            if (Vector2.Distance(transform.position, _target.position) < chasingDistance)
-            {
-                taskCycleEnemy = TaskCycleEnemy.Chase;
-            }
-            else if ((Vector2.Distance(transform.position, _target.position) > castDistanceMax) &&
-                     (Vector2.Distance(transform.position, _target.position) < castDistanceMin))
-            {
-                taskCycleEnemy = TaskCycleEnemy.CastSpell;
-            }
-            else
-            {
-                taskCycleEnemy = TaskCycleEnemy.Patrol;
-            }
-        }
-
-        if (Vector2.Distance(transform.position, _target.position) < killDistance)
-        {
-            taskCycleEnemy = TaskCycleEnemy.Attack;
         }
 
         switch (taskCycleEnemy)
@@ -113,7 +115,6 @@ public class Enemy : MonoBehaviour
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
                 break;
-            
         }
     }
 
@@ -189,7 +190,7 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
+
     private void Cleanse()
     {
         _canAttack = true;

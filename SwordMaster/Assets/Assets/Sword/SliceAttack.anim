@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SwordAnimonUnity
+  m_Name: SliceAttack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -163,7 +163,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.4166666
-        value: {x: 0, y: 0, z: 762.317}
+        value: {x: 0, y: 0, z: 759.36}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -307,15 +307,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: {x: -1.55, y: -1.22, z: 0}
-        inSlope: {x: -13.440003, y: -3.660001, z: 0}
-        outSlope: {x: -13.440003, y: -3.660001, z: 0}
+        inSlope: {x: -13.620003, y: -4.440001, z: 0}
+        outSlope: {x: -13.620003, y: -4.440001, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.4166666
-        value: {x: -2.76, y: -1.62, z: 0}
+        value: {x: -2.79, y: -1.75, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -504,15 +504,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: -1.55
-        inSlope: -13.440003
-        outSlope: -13.440003
+        inSlope: -13.620003
+        outSlope: -13.620003
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.4166666
-        value: -2.76
+        value: -2.79
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -658,15 +658,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.3333334
         value: -1.22
-        inSlope: -3.660001
-        outSlope: -3.660001
+        inSlope: -4.440001
+        outSlope: -4.440001
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.4166666
-        value: -1.62
+        value: -1.75
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1309,7 +1309,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.4166666
-        value: 762.317
+        value: 759.36
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1356,4 +1356,25 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.4166666
+    functionName: AttackRangeDecrease
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4166666
+    functionName: CanMove
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.4166666
+    functionName: AttackInterval
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
