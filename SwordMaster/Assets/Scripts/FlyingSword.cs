@@ -23,9 +23,9 @@ public class FlyingSword : MonoBehaviour
     private Vector2 _offsetLeft = new Vector2(-1.09f, 0.63f);
     private Vector2 _offsetRight = new Vector2(1.09f, 0.63f);
 
-    private float _distanceThreshold = 1f;
+    // private float _distanceThreshold = 1f;
+    //  private float _moveSpeed = 0.1f;
     private float _rotationSpeed = 15f;
-    private float _moveSpeed = 0.1f;
     private float _minAngle = -10f;
     private float _maxAngle = 10f;
     private float _randomX;
@@ -37,7 +37,6 @@ public class FlyingSword : MonoBehaviour
     private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
-    private bool attackAnimComplete = true;
     const string ATTACK_1 = "SliceAttack";
     const string IDLE = "Idle";
 
@@ -186,10 +185,5 @@ public class FlyingSword : MonoBehaviour
     private void AttackRangeDecrease()
     {
         attackRange = 1.5f;
-    }
-
-    private void AttackAnimComplete()
-    {
-        attackAnimComplete = true;
     }
 }
