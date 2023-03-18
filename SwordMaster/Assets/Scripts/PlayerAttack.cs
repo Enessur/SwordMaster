@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
             for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                enemiesToDamage[i].GetComponent<DeathBringerEnemy>().TakeDamage(damage);
             }
             ChangeAnimationState(PLAYER_ATTACK1);
             if (attackNum == 0)

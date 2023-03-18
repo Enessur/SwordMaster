@@ -162,7 +162,7 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             _shake.CamShake();
-            enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+            enemiesToDamage[i].GetComponent<DeathBringerEnemy>().TakeDamage(damage);
         }
     }
     private void Attack()
