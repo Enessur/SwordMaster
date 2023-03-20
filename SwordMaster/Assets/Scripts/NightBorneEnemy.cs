@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class NightBorneEnemy : MonoBehaviour
 {
-
     public enum TaskCycleEnemy
     {
         Chase,
@@ -32,13 +31,13 @@ public class NightBorneEnemy : MonoBehaviour
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private float teleportRange;
     [SerializeField] private bool isTeleporting;
-    
-    
+
 
     public Transform moveSpot;
-    public int health;
-    public float speed;
+    public float patrolSpeed;
 
+
+    private EnemyHealth _enemyHealth;
     private Rigidbody2D _rb;
     private Transform _target;
     private float _patrolTimer;
@@ -46,7 +45,8 @@ public class NightBorneEnemy : MonoBehaviour
     private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
-    
+    private int _currentHealth;
+    private bool _isDamageTaken = false;
     
     //Animation States 
     const string ENEMY_IDLE = "Idle";
@@ -54,10 +54,8 @@ public class NightBorneEnemy : MonoBehaviour
     const string ENEMY_ATTACK = "Attack";
     const string ENEMY_DEATH = "Death";
     const string ENEMY_TAKEDAMAGE = "TakeDamage";
-    
-    
-    
-    
+
+
     void Start()
     {
         isTeleporting = false;
@@ -68,11 +66,21 @@ public class NightBorneEnemy : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
-        if (health >= 1)
+        _enemyHealth = GetComponent<EnemyHealth>();
+        
+            if (!_isDamageTaken)
+            {
+                _enemyHealth.OnDamageTaken += OnDamageTaken;
+                
+                _isDamageTaken = true;
+            }
+       
+
+        _currentHealth = GetComponent<EnemyHealth>().health;
+
+        if (_currentHealth >= 1)
         {
             if (_canMove == true)
             {
@@ -112,7 +120,7 @@ public class NightBorneEnemy : MonoBehaviour
             case TaskCycleEnemy.Patrol:
                 PatrolPosition();
                 transform.position =
-                    Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+                    Vector2.MoveTowards(transform.position, moveSpot.position, patrolSpeed * Time.deltaTime);
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
@@ -120,9 +128,10 @@ public class NightBorneEnemy : MonoBehaviour
                 ChangeAnimationState(ENEMY_IDLE);
                 break;
             case TaskCycleEnemy.Attack:
+                FlipSprite(_target);
                 Attack();
                 break;
-          
+
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
                 break;
@@ -130,18 +139,9 @@ public class NightBorneEnemy : MonoBehaviour
                 Teleport();
                 break;
         }
-        
-        
-      
-        
     }
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        ChangeAnimationState(ENEMY_TAKEDAMAGE);
-        Debug.Log("Damage Taken");
-    }
-        
+
+
     private void PatrolPosition()
     {
         _patrolTimer += Time.deltaTime;
@@ -151,28 +151,42 @@ public class NightBorneEnemy : MonoBehaviour
 
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
-        
+
     private void Attack()
     {
         if (_canAttack)
         {
             if (transform.position.x - _target.position.x > 0f)
             {
-                attackPos.position = transform.position + new Vector3(-2f, 0f, 0f);
+                attackPos.position = transform.position + new Vector3(-1.2f, -0.5f, 0f);
             }
             else
             {
-                attackPos.position = transform.position +new Vector3(+2f, 0f, 0f);
+                attackPos.position = transform.position + new Vector3(+1.2f, -0.5f, 0f);
             }
+
             _canMove = false;
             ChangeAnimationState(ENEMY_ATTACK);
             _canAttack = false;
         }
     }
+
+    private void OnDamageTaken(int damage)
+    {
+        Debug.Log("Damage taken: " + damage);
+        _canMove = false;
+        ChangeAnimationState(ENEMY_TAKEDAMAGE);
+        OnDestroy();
+    }
     
+    private void OnDestroy()
+    {
+        _enemyHealth.OnDamageTaken -= OnDamageTaken;
+    }
+
     private void FlipSprite(Transform dest)
     {
-        spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
+        spriteRenderer.flipX = (transform.position.x - dest.position.x > 0);
     }
 
 
@@ -187,20 +201,20 @@ public class NightBorneEnemy : MonoBehaviour
         //play the animation
         _animator.Play(newState);
     }
-    
+
     private void Teleport()
     {
-        Vector3 randomPos = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)); 
-        transform.position = _target.position + randomPos; 
+        Vector3 randomPos = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+        transform.position = _target.position + randomPos;
         isTeleporting = false;
     }
-    
-    
+
+
     private void hit()
     {
-        Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position,attackRange,whatIsPlayer);
-        
+        Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
     }
+
     private void AttackInterval()
     {
         _canAttack = true;
@@ -210,7 +224,7 @@ public class NightBorneEnemy : MonoBehaviour
     {
         _canMove = true;
     }
-    
+
 
     private void DestroyEnemy()
     {
@@ -222,13 +236,10 @@ public class NightBorneEnemy : MonoBehaviour
         _canAttack = true;
         _canMove = true;
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
-    
-    
-
-
 }

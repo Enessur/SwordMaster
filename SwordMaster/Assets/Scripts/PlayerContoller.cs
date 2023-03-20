@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CodeMonkey;
 using UnityEngine;
 using CodeMonkey.Utils;
+
 public class PlayerContoller : MonoBehaviour
 {
     public enum TaskCycles
@@ -20,7 +21,7 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
-    
+
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -53,9 +54,8 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
-        
-        
-        
+
+
         if (Input.GetMouseButtonDown(0))
         {
             taskCycle = TaskCycles.Attack;
@@ -68,15 +68,16 @@ public class PlayerContoller : MonoBehaviour
         switch (taskCycle)
         {
             case TaskCycles.Move:
-        
+
                 HandleControl();
                 break;
-        
+
             case TaskCycles.Attack:
-               Attack();
+                Attack();
                 break;
         }
     }
+
     // todo: add roll and collider to dash 
     private void FixedUpdate()
     {
@@ -90,10 +91,11 @@ public class PlayerContoller : MonoBehaviour
             _isDashButtonDown = false;
         }
     }
+
     private void HandleControl()
     {
-     float moveX = 0f;
-     float moveY = 0f;
+        float moveX = 0f;
+        float moveY = 0f;
         if (_canMove == true)
         {
             //todo:find a better way to use flipX
@@ -151,7 +153,6 @@ public class PlayerContoller : MonoBehaviour
         {
             return;
         }
-
         //play the animation
         _animator.Play(newState);
     }
@@ -162,38 +163,36 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             _shake.CamShake();
-            enemiesToDamage[i].GetComponent<DeathBringerEnemy>().TakeDamage(damage);
+            enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
         }
     }
+
     private void Attack()
     {
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
         Vector3 attackDir = (mousePosition - transform.position);
-       // CMDebug.TextPopupMouse("" + attackDir);
+        // CMDebug.TextPopupMouse("" + attackDir);
         if (attackDir.x < 0)
         {
             _renderer.flipX = true;
             attackPos.position = transform.position + new Vector3(-1.4f, 0f, 0f);
-            
         }
         else
         {
             _renderer.flipX = !true;
-            attackPos.position = transform.position +new Vector3(+1.4f, 0f, 0f);
+            attackPos.position = transform.position + new Vector3(+1.4f, 0f, 0f);
         }
-        
+
         if (_canAttack == true)
         {
             _canMove = false;
-
-            
             _attackNum++;
-            
+
             if (_attackNum == 1)
             {
-                 ChangeAnimationState(PLAYER_ATTACK1);
-                 
-            } 
+                ChangeAnimationState(PLAYER_ATTACK1);
+            }
+
             if (_attackNum == 2)
             {
                 ChangeAnimationState(PLAYER_ATTACK2);
@@ -204,7 +203,7 @@ public class PlayerContoller : MonoBehaviour
                 ChangeAnimationState(PLAYER_ATTACK3);
                 _attackNum = 0;
             }
-         
+
             _canAttack = false;
         }
     }

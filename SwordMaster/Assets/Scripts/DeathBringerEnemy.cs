@@ -31,18 +31,21 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private float castDistanceMin;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private bool oneTime;
-    
+
     public Transform moveSpot;
-    public int health;
     public float speed;
 
+
+    private EnemyHealth _enemyHealth;
     private Transform _target;
+    private Animator _animator;
+    private int _currentHealth;
     private float _patrolTimer;
     private string _currentAnimation;
-    private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
 
+    private bool _isDamageTaken = false;
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
@@ -61,7 +64,18 @@ public class DeathBringerEnemy : MonoBehaviour
 
     void Update()
     {
-        if (health >= 1)
+        _enemyHealth = GetComponent<EnemyHealth>();
+        
+        if (!_isDamageTaken)
+        {
+            _enemyHealth.OnDamageTaken += OnDamageTaken;
+                
+            _isDamageTaken = true;
+        }
+        _currentHealth = GetComponent<EnemyHealth>().health;
+
+
+        if (_currentHealth >= 1)
         {
             if (_canMove == true)
             {
@@ -98,6 +112,7 @@ public class DeathBringerEnemy : MonoBehaviour
                 FlipSprite(_target);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
+
             case TaskCycleEnemy.Patrol:
                 PatrolPosition();
                 transform.position =
@@ -105,27 +120,40 @@ public class DeathBringerEnemy : MonoBehaviour
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
+
             case TaskCycleEnemy.Idle:
                 ChangeAnimationState(ENEMY_IDLE);
                 GameOver();
                 break;
+
             case TaskCycleEnemy.Attack:
                 Attack();
                 break;
+
             case TaskCycleEnemy.CastSpell:
                 ChangeAnimationState(ENEMY_CASTSPELL);
                 break;
+
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
                 break;
         }
     }
 
-    public void TakeDamage(int damage)
+    private void OnDamageTaken(int damage)
     {
-        health -= damage;
+        Debug.Log("Damage taken: " + damage);
+        _isDamageTaken = false;
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
-        Debug.Log("Damage Taken");
+    }
+    private void OnDestroy()
+    {
+        _enemyHealth.OnDamageTaken -= OnDamageTaken;
+    }
+
+    private void FlipSprite(Transform dest)
+    {
+        spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
     }
 
     private void PatrolPosition()
@@ -148,8 +176,9 @@ public class DeathBringerEnemy : MonoBehaviour
             }
             else
             {
-                attackPos.position = transform.position +new Vector3(+2f, 0f, 0f);
+                attackPos.position = transform.position + new Vector3(+2f, 0f, 0f);
             }
+
             _canMove = false;
             ChangeAnimationState(ENEMY_ATTACK);
             _canAttack = false;
@@ -163,12 +192,6 @@ public class DeathBringerEnemy : MonoBehaviour
         // SceneManager.Instance.LoseGame();
         oneTime = true;
     }
-
-    private void FlipSprite(Transform dest)
-    {
-        spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
-    }
-
 
     void ChangeAnimationState(string newState)
     {
@@ -184,11 +207,9 @@ public class DeathBringerEnemy : MonoBehaviour
 
     private void hit()
     {
-        Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position,attackRange,whatIsPlayer);
-        
+        Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
     }
-    
-    
+
     private void AttackInterval()
     {
         _canAttack = true;
@@ -214,9 +235,20 @@ public class DeathBringerEnemy : MonoBehaviour
         _canAttack = true;
         _canMove = true;
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    public void gethit()
+    {
+        ChangeAnimationState(ENEMY_TAKEDAMAGE);
+    }
+
+    public void die()
+    {
+        ChangeAnimationState(ENEMY_DEATH);
     }
 }
