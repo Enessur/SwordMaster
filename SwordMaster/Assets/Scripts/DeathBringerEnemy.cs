@@ -19,6 +19,7 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private GameObject shadowRb;
     [SerializeField] private Transform attackPos;
     [SerializeField] private LayerMask whatIsPlayer;
+    [SerializeField] private int damage;
     [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
     [SerializeField] private float minX;
@@ -31,12 +32,15 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private float castDistanceMin;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private bool oneTime;
+    
+    
 
     public Transform moveSpot;
     public float speed;
 
-
     private EnemyHealth _enemyHealth;
+   // private PlayerContoller _playerHealth;
+    //private int _playerCurrentHealt;
     private Transform _target;
     private Animator _animator;
     private int _currentHealth;
@@ -44,8 +48,9 @@ public class DeathBringerEnemy : MonoBehaviour
     private string _currentAnimation;
     private bool _canAttack = true;
     private bool _canMove = true;
-
     private bool _isDamageTaken = false;
+    private bool _IsPlayerAlive = true;
+    
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
@@ -60,21 +65,28 @@ public class DeathBringerEnemy : MonoBehaviour
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+        
     }
 
     void Update()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
+        _currentHealth = GetComponent<EnemyHealth>().health;
         
+       // _playerHealth = GetComponent<PlayerContoller>();
+       // _playerCurrentHealt = GetComponent<PlayerContoller>().playerHealth;
+        // if (_playerCurrentHealt < 1)
+        // {
+        //     _IsPlayerAlive = false;
+        // }
         if (!_isDamageTaken)
         {
             _enemyHealth.OnDamageTaken += OnDamageTaken;
                 
             _isDamageTaken = true;
         }
-        _currentHealth = GetComponent<EnemyHealth>().health;
 
-
+        
         if (_currentHealth >= 1)
         {
             if (_canMove == true)
@@ -94,7 +106,7 @@ public class DeathBringerEnemy : MonoBehaviour
                 }
             }
 
-            if (Vector2.Distance(transform.position, _target.position) < attackDistance)
+            if ((Vector2.Distance(transform.position, _target.position) < attackDistance))
             {
                 taskCycleEnemy = TaskCycleEnemy.Attack;
             }
@@ -208,6 +220,10 @@ public class DeathBringerEnemy : MonoBehaviour
     private void hit()
     {
         Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
+        for (int i = 0; i < playerToDamage.Length; i++)
+        {
+            playerToDamage[i].GetComponent<PlayerContoller>().TakeDamage(damage);
+        }
     }
 
     private void AttackInterval()
@@ -235,13 +251,7 @@ public class DeathBringerEnemy : MonoBehaviour
         _canAttack = true;
         _canMove = true;
     }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
-    }
-
+    
     public void gethit()
     {
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
@@ -250,5 +260,10 @@ public class DeathBringerEnemy : MonoBehaviour
     public void die()
     {
         ChangeAnimationState(ENEMY_DEATH);
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 }

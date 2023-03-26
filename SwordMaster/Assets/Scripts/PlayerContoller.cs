@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CodeMonkey;
 using UnityEngine;
 using CodeMonkey.Utils;
+using TMPro;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerContoller : MonoBehaviour
         Move,
         Attack
     }
+    public int playerHealth;
 
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashAmount = 50f;
@@ -21,7 +23,8 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
-
+    
+    
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -40,6 +43,8 @@ public class PlayerContoller : MonoBehaviour
     const string PLAYER_ATTACK1 = "Attack1";
     const string PLAYER_ATTACK2 = "Attack2";
     const string PLAYER_ATTACK3 = "Attack3";
+    private const string TAKE_DAMAGE = "TakeDamage";
+    const string DEATH = "Death";
 
 
     private void Start()
@@ -218,9 +223,41 @@ public class PlayerContoller : MonoBehaviour
     {
         _canMove = true;
     }
-
     private void AttackInterval()
     {
         _canAttack = true;
     }
+    public void Stop()
+    {
+        _canAttack = false;
+        _canMove = false;
+    }
+    public void Cleanse()
+    {
+        _canAttack = true;
+        _canMove = true;
+    }
+
+    public void TakeDamage(int takendamage)
+    {
+       
+        if (playerHealth < 1)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            ChangeAnimationState(DEATH);
+            Stop();
+            
+        }
+        else
+        {
+            playerHealth -= takendamage;
+            ChangeAnimationState(TAKE_DAMAGE);
+            _shake.CamShake();
+            Stop();
+            Debug.Log("Player health : "+playerHealth);
+        }
+    }
+
+
+
 }

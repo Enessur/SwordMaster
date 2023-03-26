@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/BasicEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerBehavior.cs" root0="FORCE_HIGHLIGHTING" />
@@ -110,6 +111,9 @@
       <workItem from="1679162585100" duration="1313000" />
       <workItem from="1679223144177" duration="16932000" />
       <workItem from="1679296970907" duration="5199000" />
+      <workItem from="1679394382629" duration="1582000" />
+      <workItem from="1679750692730" duration="8159000" />
+      <workItem from="1679819365245" duration="13354000" />
     </task>
     <servers />
   </component>

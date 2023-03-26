@@ -31,6 +31,7 @@ public class FlyingSword : MonoBehaviour
     private float _randomX;
     private float _randomY;
     private float currentAngle;
+    private int _attackNum;
 
     //Animation
     private string _currentAnimation;
@@ -38,6 +39,8 @@ public class FlyingSword : MonoBehaviour
     private bool _canAttack = true;
     private bool _canMove = true;
     const string ATTACK_1 = "SliceAttack";
+    const string ATTACK_2 = "DownUpAttack";
+    const string ATTACK_3 = "UpDownAttack";
     const string IDLE = "Idle";
 
     void Start()
@@ -45,6 +48,8 @@ public class FlyingSword : MonoBehaviour
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _enemyTarget = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+       
     }
 
     void FixedUpdate()
@@ -108,10 +113,12 @@ public class FlyingSword : MonoBehaviour
                 if (targetPosition.x - swordPosition.x > 0)
                 {
                     _followPosition = targetPosition + _offsetLeft;
+                    _animator.SetBool("Mirror",false);
                 }
                 else
                 {
                     _followPosition = targetPosition + _offsetRight;
+                    _animator.SetBool("Mirror",true);
                 }
 
                 transform.position = new Vector2(newPosition.x, newPosition.y);
@@ -150,7 +157,7 @@ public class FlyingSword : MonoBehaviour
                 if (_canAttack == true)
                 {
                     attackRange = 20f;
-                    ChangeAnimationState(ATTACK_1);
+                   AttackAnim();
                     _canAttack = false;
                     _canMove = false;
                 }
@@ -159,6 +166,7 @@ public class FlyingSword : MonoBehaviour
         }
 
 
+    }
         void ChangeAnimationState(string newState)
         {
             //stop the same animation from interrupting itself
@@ -170,7 +178,6 @@ public class FlyingSword : MonoBehaviour
             //play the animation
             _animator.Play(newState);
         }
-    }
 
     private void AttackInterval()
     {
@@ -185,5 +192,25 @@ public class FlyingSword : MonoBehaviour
     private void AttackRangeDecrease()
     {
         attackRange = 1.5f;
+    }
+
+    private void AttackAnim()
+    {
+        _attackNum++;
+        if (_attackNum == 1)
+        {
+            ChangeAnimationState(ATTACK_1);
+        }
+
+        if (_attackNum == 2)
+        {
+            ChangeAnimationState(ATTACK_2);
+        }
+
+        if (_attackNum == 3)
+        {
+            ChangeAnimationState(ATTACK_3);
+            _attackNum = 0;
+        }
     }
 }
