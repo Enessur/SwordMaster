@@ -21,10 +21,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
-    [SerializeField] private float minX;
-    [SerializeField] private float maxX;
-    [SerializeField] private float minY;
-    [SerializeField] private float maxY;
+    [SerializeField] private float xMin ,yMin,xMax,yMax;
     [SerializeField] private float chasingDistance;
     [SerializeField] private float attackDistance;
     [SerializeField] private float attackRange = 1f;
@@ -32,7 +29,7 @@ public class BasicEnemy : MonoBehaviour
   
     public Transform moveSpot;
     public float patrolSpeed;
-
+    public GameObject PatrolBorders;
     
     private EnemyHealth _enemyHealth;
     private Rigidbody2D _rb;
@@ -44,7 +41,7 @@ public class BasicEnemy : MonoBehaviour
     private bool _canMove = true;
     private int _currentHealth;
     private bool _isDamageTaken = false;
-    
+    private Vector3 PatrolPos;
     
     
     const string ENEMY_IDLE = "Idle";
@@ -54,11 +51,21 @@ public class BasicEnemy : MonoBehaviour
    
     void Start()
     {
+        BoxCollider2D squareCollider = PatrolBorders.GetComponent<BoxCollider2D>();
+        
+        xMin = PatrolBorders.transform.position.x - squareCollider.size.x / 2;
+        xMax = PatrolBorders.transform.position.x + squareCollider.size.x / 2;
+        yMin = PatrolBorders.transform.position.y - squareCollider.size.y / 2;
+        yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
+        
+        PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
         
         _rb = GetComponent<Rigidbody2D>();
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+       
+        PatrolBorders.transform.parent = null;
     }
     
     
@@ -112,7 +119,8 @@ public class BasicEnemy : MonoBehaviour
             case TaskCycleEnemy.Patrol:
                 PatrolPosition();
                 transform.position =
-                    Vector2.MoveTowards(transform.position, moveSpot.position, patrolSpeed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
+                moveSpot.position = PatrolPos;
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
@@ -139,7 +147,13 @@ public class BasicEnemy : MonoBehaviour
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
 
-        moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        transform.position =
+            transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
+       
+        if (transform.position == (Vector3) PatrolPos)
+        {
+            PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        }
     }
     
     

@@ -13,8 +13,9 @@ public class PlayerContoller : MonoBehaviour
         Move,
         Attack
     }
-    public int playerHealth;
 
+    public int playerHealth;
+    
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashAmount = 50f;
     [SerializeField] private Transform attackPos;

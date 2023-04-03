@@ -22,10 +22,7 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
-    [SerializeField] private float minX;
-    [SerializeField] private float maxX;
-    [SerializeField] private float minY;
-    [SerializeField] private float maxY;
+    [SerializeField] private float xMin ,yMin,xMax,yMax;
     [SerializeField] private float chasingDistance;
     [SerializeField] private float attackDistance;
     [SerializeField] private float castDistanceMax;
@@ -33,10 +30,11 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private bool oneTime;
     
-    
-
+    public float patrolSpeed;
+    public GameObject PatrolBorders;
     public Transform moveSpot;
     public float speed;
+    private Vector3 PatrolPos;
 
     private EnemyHealth _enemyHealth;
    // private PlayerContoller _playerHealth;
@@ -61,10 +59,20 @@ public class DeathBringerEnemy : MonoBehaviour
 
     void Start()
     {
+        BoxCollider2D squareCollider = PatrolBorders.GetComponent<BoxCollider2D>();
+        
+        xMin = PatrolBorders.transform.position.x - squareCollider.size.x / 2;
+        xMax = PatrolBorders.transform.position.x + squareCollider.size.x / 2;
+        yMin = PatrolBorders.transform.position.y - squareCollider.size.y / 2;
+        yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
+        
+        PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        
         oneTime = false;
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
+          PatrolBorders.transform.parent = null;
         
     }
 
@@ -128,7 +136,9 @@ public class DeathBringerEnemy : MonoBehaviour
             case TaskCycleEnemy.Patrol:
                 PatrolPosition();
                 transform.position =
-                    Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+                    transform.position =
+                        Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
+                moveSpot.position = PatrolPos;
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
@@ -175,7 +185,13 @@ public class DeathBringerEnemy : MonoBehaviour
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
 
-        moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        transform.position =
+            transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
+       
+        if (transform.position == (Vector3) PatrolPos)
+        {
+            PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        }
     }
 
     private void Attack()

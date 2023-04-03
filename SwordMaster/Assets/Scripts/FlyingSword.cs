@@ -114,11 +114,13 @@ public class FlyingSword : MonoBehaviour
                 {
                     _followPosition = targetPosition + _offsetLeft;
                     _animator.SetBool("Mirror",false);
+                    transform.rotation = Quaternion.Euler(0,0,41f);
                 }
                 else
                 {
                     _followPosition = targetPosition + _offsetRight;
                     _animator.SetBool("Mirror",true);
+                    transform.rotation = Quaternion.Euler(0,0,41f);
                 }
 
                 transform.position = new Vector2(newPosition.x, newPosition.y);
