@@ -9,18 +9,12 @@ public class ShadowSpell : MonoBehaviour
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private int damage;
-    
-    
-    // Start is called before the first frame update
+
     void Start()
     {
         transform.position = transform.position + new Vector3(0.3f, 1.7f, 0f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     private void hit()
     {
         Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
@@ -34,6 +28,7 @@ public class ShadowSpell : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

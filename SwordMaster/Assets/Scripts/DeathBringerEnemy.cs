@@ -22,23 +22,21 @@ public class DeathBringerEnemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
-    [SerializeField] private float xMin ,yMin,xMax,yMax;
+    [SerializeField] private float xMin, yMin, xMax, yMax;
     [SerializeField] private float chasingDistance;
     [SerializeField] private float attackDistance;
     [SerializeField] private float castDistanceMax;
     [SerializeField] private float castDistanceMin;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private bool oneTime;
-    
+
     public float patrolSpeed;
     public GameObject PatrolBorders;
     public Transform moveSpot;
     public float speed;
-    private Vector3 PatrolPos;
 
+    private Vector3 PatrolPos;
     private EnemyHealth _enemyHealth;
-   // private PlayerContoller _playerHealth;
-    //private int _playerCurrentHealt;
     private Transform _target;
     private Animator _animator;
     private int _currentHealth;
@@ -46,9 +44,10 @@ public class DeathBringerEnemy : MonoBehaviour
     private string _currentAnimation;
     private bool _canAttack = true;
     private bool _canMove = true;
+
     private bool _isDamageTaken = false;
-    private bool _IsPlayerAlive = true;
-    
+    //private bool _IsPlayerAlive = true;
+
     //Animation States
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
@@ -60,29 +59,30 @@ public class DeathBringerEnemy : MonoBehaviour
     void Start()
     {
         BoxCollider2D squareCollider = PatrolBorders.GetComponent<BoxCollider2D>();
-        
+
         xMin = PatrolBorders.transform.position.x - squareCollider.size.x / 2;
         xMax = PatrolBorders.transform.position.x + squareCollider.size.x / 2;
         yMin = PatrolBorders.transform.position.y - squareCollider.size.y / 2;
         yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
-        
+
         PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
-        
+
+        TargetManager.Instance.AddEnemy(this.transform);
+
         oneTime = false;
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
-          PatrolBorders.transform.parent = null;
-        
+        PatrolBorders.transform.parent = null;
     }
 
     void Update()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
         _currentHealth = GetComponent<EnemyHealth>().health;
-        
-       // _playerHealth = GetComponent<PlayerContoller>();
-       // _playerCurrentHealt = GetComponent<PlayerContoller>().playerHealth;
+
+        // _playerHealth = GetComponent<PlayerContoller>();
+        // _playerCurrentHealt = GetComponent<PlayerContoller>().playerHealth;
         // if (_playerCurrentHealt < 1)
         // {
         //     _IsPlayerAlive = false;
@@ -90,11 +90,11 @@ public class DeathBringerEnemy : MonoBehaviour
         if (!_isDamageTaken)
         {
             _enemyHealth.OnDamageTaken += OnDamageTaken;
-                
+
             _isDamageTaken = true;
         }
 
-        
+
         if (_currentHealth >= 1)
         {
             if (_canMove == true)
@@ -158,6 +158,7 @@ public class DeathBringerEnemy : MonoBehaviour
 
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
+                TargetManager.Instance.RemoveEnemy(this.transform);
                 break;
         }
     }
@@ -168,6 +169,7 @@ public class DeathBringerEnemy : MonoBehaviour
         _isDamageTaken = false;
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
     }
+
     private void OnDestroy()
     {
         _enemyHealth.OnDamageTaken -= OnDamageTaken;
@@ -187,8 +189,8 @@ public class DeathBringerEnemy : MonoBehaviour
 
         transform.position =
             transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
-       
-        if (transform.position == (Vector3) PatrolPos)
+
+        if (transform.position == (Vector3)PatrolPos)
         {
             PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
         }
@@ -267,7 +269,7 @@ public class DeathBringerEnemy : MonoBehaviour
         _canAttack = true;
         _canMove = true;
     }
-    
+
     public void gethit()
     {
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
@@ -277,6 +279,7 @@ public class DeathBringerEnemy : MonoBehaviour
     {
         ChangeAnimationState(ENEMY_DEATH);
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

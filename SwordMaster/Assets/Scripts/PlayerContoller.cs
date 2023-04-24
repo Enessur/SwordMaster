@@ -15,7 +15,7 @@ public class PlayerContoller : MonoBehaviour
     }
 
     public int playerHealth;
-    
+
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashAmount = 50f;
     [SerializeField] private Transform attackPos;
@@ -24,8 +24,6 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
-    
-    
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -44,7 +42,7 @@ public class PlayerContoller : MonoBehaviour
     const string PLAYER_ATTACK1 = "Attack1";
     const string PLAYER_ATTACK2 = "Attack2";
     const string PLAYER_ATTACK3 = "Attack3";
-    private const string TAKE_DAMAGE = "TakeDamage";
+    const string TAKE_DAMAGE = "TakeDamage";
     const string DEATH = "Death";
 
 
@@ -60,8 +58,6 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
-
-
         if (Input.GetMouseButtonDown(0))
         {
             taskCycle = TaskCycles.Attack;
@@ -84,7 +80,6 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
-    // todo: add roll and collider to dash 
     private void FixedUpdate()
     {
         _rb.velocity = _moveDir * moveSpeed;
@@ -159,6 +154,7 @@ public class PlayerContoller : MonoBehaviour
         {
             return;
         }
+
         //play the animation
         _animator.Play(newState);
     }
@@ -169,6 +165,7 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             _shake.CamShake();
+          //  EnemyHealth.Instance.TakeDamage(damage);
             enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
         }
     }
@@ -224,15 +221,18 @@ public class PlayerContoller : MonoBehaviour
     {
         _canMove = true;
     }
+
     private void AttackInterval()
     {
         _canAttack = true;
     }
+
     public void Stop()
     {
         _canAttack = false;
         _canMove = false;
     }
+
     public void Cleanse()
     {
         _canAttack = true;
@@ -241,13 +241,11 @@ public class PlayerContoller : MonoBehaviour
 
     public void TakeDamage(int takendamage)
     {
-       
         if (playerHealth < 1)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
             ChangeAnimationState(DEATH);
             Stop();
-            
         }
         else
         {
@@ -255,10 +253,7 @@ public class PlayerContoller : MonoBehaviour
             ChangeAnimationState(TAKE_DAMAGE);
             _shake.CamShake();
             Stop();
-            Debug.Log("Player health : "+playerHealth);
+            Debug.Log("Player health : " + playerHealth);
         }
     }
-
-
-
 }

@@ -11,20 +11,22 @@ public class FlyingSword : MonoBehaviour
         Follow,
     }
 
+    public float swordPatrolRange = 10f;
+
     [SerializeField] private TaskCycleSword taskCycleSword;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float chaseSpeed;
-    [SerializeField] private float swordPatrolRange = 10f;
     [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float attackArea = 1.5f;
+    [SerializeField] private Transform attackPos;
+    [SerializeField] private LayerMask whatIsEnemies;
+    [SerializeField] private int damage;
+    
     private Transform _target;
     private Transform _enemyTarget;
-
     private Vector2 _followPosition;
     private Vector2 _offsetLeft = new Vector2(-1.09f, 0.63f);
     private Vector2 _offsetRight = new Vector2(1.09f, 0.63f);
-
-    // private float _distanceThreshold = 1f;
-    //  private float _moveSpeed = 0.1f;
     private float _rotationSpeed = 15f;
     private float _minAngle = -10f;
     private float _maxAngle = 10f;
@@ -38,6 +40,7 @@ public class FlyingSword : MonoBehaviour
     private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
+
     const string ATTACK_1 = "SliceAttack";
     const string ATTACK_2 = "DownUpAttack";
     const string ATTACK_3 = "UpDownAttack";
@@ -46,27 +49,22 @@ public class FlyingSword : MonoBehaviour
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        _enemyTarget = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+       // _enemyTarget = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-       
+        TargetManager.Instance.GetSword(swordPatrolRange);
     }
 
     void FixedUpdate()
     {
+        FindEnemy();
+
         _randomX = Random.Range(0.2f, -0.2f);
         _randomY = Random.Range(0.2f, -0.2f);
 
         Vector2 randomMovement = new Vector2(_randomX, _randomY);
-
-        // transform.position = new Vector2(_randomX, _randomY);
-        // _minAngle = Random.Range(-25f, -15f);
-        // _maxAngle = Random.Range(15f, 25f);
-
-        Vector2 targetPosition =
-            new Vector2(_target.position.x, _target.position.y);
-        Vector2 swordPosition =
-            new Vector2(transform.position.x, transform.position.y);
+        Vector2 targetPosition = new Vector2(_target.position.x, _target.position.y);
+        Vector2 swordPosition = new Vector2(transform.position.x, transform.position.y);
 
         if (_canMove)
         {
@@ -113,18 +111,21 @@ public class FlyingSword : MonoBehaviour
                 if (targetPosition.x - swordPosition.x > 0)
                 {
                     _followPosition = targetPosition + _offsetLeft;
-                    _animator.SetBool("Mirror",false);
-                    transform.rotation = Quaternion.Euler(0,0,41f);
+                    _animator.SetBool("Mirror", false);
+                    transform.rotation = Quaternion.Euler(0, 180f, 41f);
+                    Debug.Log("Left attack");
+                    //attackPos.position = transform.position + new Vector3(-1.4f, 0f, 0f);
                 }
                 else
                 {
                     _followPosition = targetPosition + _offsetRight;
-                    _animator.SetBool("Mirror",true);
-                    transform.rotation = Quaternion.Euler(0,0,41f);
+                    _animator.SetBool("Mirror", true);
+                    transform.rotation = Quaternion.Euler(0, 0, 41f);
+                    Debug.Log("Right attack");
+                    //attackPos.position = transform.position + new Vector3(+1.4f, 0f, 0f);
                 }
 
                 transform.position = new Vector2(newPosition.x, newPosition.y);
-
 
                 break;
 
@@ -137,10 +138,16 @@ public class FlyingSword : MonoBehaviour
                 if (enemyPosition.x - swordPosition.x > 0)
                 {
                     _followPosition = enemyPosition + _offsetLeft;
+                   
+                    transform.rotation = Quaternion.Euler(0, 0, 41f);
+                    Debug.Log("Left attack");
                 }
                 else
                 {
                     _followPosition = enemyPosition + _offsetRight;
+                   
+                    transform.rotation = Quaternion.Euler(0, 180f, 41f);
+                    Debug.Log("Right attack");
                 }
 
                 direction = (_followPosition - swordPosition);
@@ -151,7 +158,6 @@ public class FlyingSword : MonoBehaviour
                     taskCycleSword = TaskCycleSword.Follow;
                 }
 
-
                 break;
 
             case TaskCycleSword.Attack:
@@ -159,27 +165,26 @@ public class FlyingSword : MonoBehaviour
                 if (_canAttack == true)
                 {
                     attackRange = 20f;
-                   AttackAnim();
+                    AttackAnim();
                     _canAttack = false;
                     _canMove = false;
                 }
 
                 break;
         }
-
-
     }
-        void ChangeAnimationState(string newState)
-        {
-            //stop the same animation from interrupting itself
-            if (_currentAnimation == newState)
-            {
-                return;
-            }
 
-            //play the animation
-            _animator.Play(newState);
+    void ChangeAnimationState(string newState)
+    {
+        //stop the same animation from interrupting itself
+        if (_currentAnimation == newState)
+        {
+            return;
         }
+
+        //play the animation
+        _animator.Play(newState);
+    }
 
     private void AttackInterval()
     {
@@ -196,9 +201,15 @@ public class FlyingSword : MonoBehaviour
         attackRange = 1.5f;
     }
 
+    public void FindEnemy()
+    {
+        _enemyTarget = TargetManager.Instance.FindClosestTarget(gameObject.transform.position);
+    }
+
     private void AttackAnim()
     {
-        _attackNum++;
+        _attackNum = Random.Range(1,4);
+        Debug.Log(_attackNum);
         if (_attackNum == 1)
         {
             ChangeAnimationState(ATTACK_1);
@@ -212,7 +223,20 @@ public class FlyingSword : MonoBehaviour
         if (_attackNum == 3)
         {
             ChangeAnimationState(ATTACK_3);
-            _attackNum = 0;
+            
         }
+    }
+    private void hit()
+    {
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackArea, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackArea);
     }
 }

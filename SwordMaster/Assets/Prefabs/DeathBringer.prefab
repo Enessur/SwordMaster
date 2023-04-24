@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2983888931649176391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3299999, y: -3.3600001, z: 0.06020935}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6973121198997792677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.26, y: -0.99, z: 0}
+  m_LocalPosition: {x: 4.21, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6973121199201714014
 Transform:
   m_ObjectHideFlags: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e75db3d6bc6f3548befa04ab244f3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healParticleRb: {fileID: 7496027306882175526, guid: dbab7a1b62deabf4ab165e3c521a2912, type: 3}
   health: 30
 --- !u!114 &6973121199201714012
 MonoBehaviour:
@@ -216,16 +217,18 @@ MonoBehaviour:
   damage: 5
   startWaitTime: 1
   chaseSpeed: 4
-  minX: -5
-  maxX: 5
-  minY: -5
-  maxY: 5
+  xMin: 0
+  yMin: 0
+  xMax: 0
+  yMax: 0
   chasingDistance: 5
   attackDistance: 1
   castDistanceMax: 5
   castDistanceMin: 10
   attackRange: 2.09
   oneTime: 0
+  patrolSpeed: 4
+  PatrolBorders: {fileID: 2983888931649176391}
   moveSpot: {fileID: 6973121198997792678}
   speed: 2.5
 --- !u!50 &6973121199201714015
@@ -279,7 +282,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0, y: 0.11}

@@ -1,0 +1,1729 @@
+fileFormatVersion: 2
+guid: 1c9d2365fd3f810489dfd8c9373b1381
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 0WYcuo 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33e050f61088e14386e2e69cea59105
+      internalID: 1880399382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b5d42124e011043be3650d85be7759
+      internalID: -1168544118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81cf80f1db698c44395cfa18f1243101
+      internalID: -1179163723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2913d406a6bad914584a9e2c7010875d
+      internalID: 1358303046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f951b34afd87941aab8aae706b7fa8
+      internalID: 1353012808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8bd72df3fbc86488c01b6550946e85
+      internalID: 1591085371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_6
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498144fcd3082a74a9ded25c021e51c4
+      internalID: -2000742445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818d0abb8025f304da15fbe8367fbd3a
+      internalID: 1191163354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_8
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1184
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7562939690d30164683077c1382f47e9
+      internalID: 319104079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e530c9e326b59e41b5d3f6c2149529e
+      internalID: 1651391264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5552e280af202f4fbd4825992936c7a
+      internalID: -1896062821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280b0c9f1a3305f45bfe12630fb0b52c
+      internalID: -776714062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_12
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d88fdbabe3aff41a111093e4b9b451
+      internalID: -480766290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c7dfb2a6246ac94ab37acbb15375ac9
+      internalID: 746602701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_14
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec75e985b08a8a49be144b304a7c14a
+      internalID: 952007816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_15
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a867dbd72e1c744d9c31326c14a82f5
+      internalID: -1246871404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_16
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 677728ded2a1cbf4bb5a7e79571e11b3
+      internalID: -836984471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_17
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1036
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d4a597e69e89e4b8b4f3c6b844248f
+      internalID: -1931191093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc71157a7821bd94d97b3baf1f81186f
+      internalID: 867771328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7be672fda3184f4d899eb4f827e3863
+      internalID: 303831911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_20
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6b69bd801f3c742a744ae9e289545b
+      internalID: -1345734277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_21
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249648a8e8688eb4dba50426eda9d036
+      internalID: 959225979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_22
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b78a8e9e73b994490b81e45d10e2bb
+      internalID: -999712224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_23
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1099b9be78b544a9abc1d835ce7657
+      internalID: -1288237473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_24
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9a49f98466cfb468a34ad777f68bd8
+      internalID: 824163326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_25
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84643f3269a2ba42bee2eab2b5f6494
+      internalID: 569927064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_26
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 888
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16627dba8794e92408823be9e8e64776
+      internalID: 123742675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f487cfc90290440b174600c8ab0c07
+      internalID: -1476975126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_28
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4aec5936003d924c9d2dd8f08dde76b
+      internalID: 1985821107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_29
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a9aa05e68a3344bb71e7d8e715111a
+      internalID: -2098400678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_30
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1612ebe05ca3994ab1a98ec00d86819
+      internalID: -497825371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_31
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d717a92062fb924ab6144bbcfec26a3
+      internalID: 485167335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_32
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83a067c50be25848b9072550f07ab8c
+      internalID: 708114372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_33
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ad7d0b45354544e81c094f7f054f44
+      internalID: 1401296681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_34
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409793540a6ac54409a93594202f91f5
+      internalID: -831106810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_35
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 740
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9361a7a3ec3c042b2cbb96d685eb1a
+      internalID: 302580324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162691586ddf1f9478258fbc5cf8d7c5
+      internalID: -1866637859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_37
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 536f1d88ba003fd46b93a92b705e29d1
+      internalID: -1785048301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_38
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5379e99d492f1a74191af8ca90edfbb6
+      internalID: 306309817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_39
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490cd176195a05e49a4ff42858e457a1
+      internalID: 334779485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_40
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf0d8dc2b49c1844ea842f9b1bbf3d27
+      internalID: -1895471501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_41
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bd9aaea2fa8034c93e4f9ae899b4e6
+      internalID: 967038198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_42
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cae8a1c3ce6c0f4583406f1a6cf726e
+      internalID: 228000648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_43
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365baf791768f324a9b0fe4a5d5e0060
+      internalID: -1673662911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_44
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 592
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d03bfc2a3ab10c9449d9525999158416
+      internalID: 696407559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e049c47a5f4e4cd42b974b3ab0e71d33
+      internalID: 326276826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b77b7a41dd52324f9516e58dc2af859
+      internalID: 1148258448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_47
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807022bd7d879f4468c460fd70016b58
+      internalID: 1051210678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_48
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0b1ec3928f97d4e8e7b8a5e3426dca
+      internalID: 1624352651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_49
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b6c0ec39c121c41875e8ae5c919c22
+      internalID: 412792039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_50
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb3edaa9b41d0a48a6f923416c3cfe9
+      internalID: 1291287949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_51
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becc6335fe8c2ed4a9729be7034f196b
+      internalID: -1254563486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_52
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ec183febb733547b549118f09e6e60
+      internalID: -103789985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_53
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 444
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8e029de58d4eb4eb9930b9fba992fb
+      internalID: -960305491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c323dcb6b1d03a46bab5a3d84573b6c
+      internalID: 325814459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_55
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9bd5ee180b7ae044a58608f6e6ce955
+      internalID: -1499906909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_56
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e7ed90ffcb2d944b79da6b6fd7aad8
+      internalID: 852212124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_57
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019ad0123770326459c581fb5328e9b8
+      internalID: -739615969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_58
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0218f36ac512d924bae39acfc4fa6605
+      internalID: 308753911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_59
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0f34bc0a24e614d9d74ee5e6c423a6
+      internalID: 1631725772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_60
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7d97f228d8e7c4195166dde85d0692
+      internalID: -1498036935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_61
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88cbec613a167d41a4b0cee09854b28
+      internalID: 1420143064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_62
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 296
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5613db20c0205f745ade25ce8aa18302
+      internalID: 40902996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a43ec8ddcc3d74c99ce36317ba8166
+      internalID: 1883080889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_64
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319c47faad67d974485b39f55b931518
+      internalID: 1581299548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_65
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409877bd957f84843bf0d8544d73742f
+      internalID: 2120766886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_66
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c37b6f80670a9247afe1d6048af5a42
+      internalID: -1651800814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_67
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d6b16e8cae70f48aa2d7a462244113
+      internalID: -1643118524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_68
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5479f27493f8faf438836d285304637f
+      internalID: -143158230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_69
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08bad7a42345524aa138f41bd1f0a11
+      internalID: 778989457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_70
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8734facff063c234187ea7f91d47681d
+      internalID: -975232269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_71
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 148
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89530c330fb762446ad2cdffc592ab33
+      internalID: 596236778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0WYcuo 1_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 144
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b67bb0d4f3d0a4880e1a9c5ca6d6c9
+      internalID: -858892123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      0WYcuo 1_25: 569927064
+      0WYcuo 1_11: -776714062
+      0WYcuo 1_55: -1499906909
+      0WYcuo 1_23: -1288237473
+      0WYcuo 1_65: 2120766886
+      0WYcuo 1_6: -2000742445
+      0WYcuo 1_37: -1785048301
+      0WYcuo 1_66: -1651800814
+      0WYcuo 1_70: -975232269
+      0WYcuo 1_10: -1896062821
+      0WYcuo 1_40: -1895471501
+      0WYcuo 1_42: 228000648
+      0WYcuo 1_45: 326276826
+      0WYcuo 1_29: -2098400678
+      0WYcuo 1_17: -1931191093
+      0WYcuo 1_27: -1476975126
+      0WYcuo 1_39: 334779485
+      0WYcuo 1_30: -497825371
+      0WYcuo 1_24: 824163326
+      0WYcuo 1_67: -1643118524
+      0WYcuo 1_41: 967038198
+      0WYcuo 1_72: -858892123
+      0WYcuo 1_59: 1631725772
+      0WYcuo 1_28: 1985821107
+      0WYcuo 1_50: 1291287949
+      0WYcuo 1_46: 1148258448
+      0WYcuo 1_34: -831106810
+      0WYcuo 1_51: -1254563486
+      0WYcuo 1_71: 596236778
+      0WYcuo 1_69: 778989457
+      0WYcuo 1_20: -1345734277
+      0WYcuo 1_0: 1880399382
+      0WYcuo 1_2: -1179163723
+      0WYcuo 1_58: 308753911
+      0WYcuo 1_31: 485167335
+      0WYcuo 1_52: -103789985
+      0WYcuo 1_5: 1591085371
+      0WYcuo 1_48: 1624352651
+      0WYcuo 1_3: 1358303046
+      0WYcuo 1_26: 123742675
+      0WYcuo 1_44: 696407559
+      0WYcuo 1_32: 708114372
+      0WYcuo 1_61: 1420143064
+      0WYcuo 1_63: 1883080889
+      0WYcuo 1_64: 1581299548
+      0WYcuo 1_47: 1051210678
+      0WYcuo 1_36: -1866637859
+      0WYcuo 1_19: 303831911
+      0WYcuo 1_7: 1191163354
+      0WYcuo 1_33: 1401296681
+      0WYcuo 1_21: 959225979
+      0WYcuo 1_35: 302580324
+      0WYcuo 1_43: -1673662911
+      0WYcuo 1_18: 867771328
+      0WYcuo 1_38: 306309817
+      0WYcuo 1_62: 40902996
+      0WYcuo 1_60: -1498036935
+      0WYcuo 1_9: 1651391264
+      0WYcuo 1_14: 952007816
+      0WYcuo 1_1: -1168544118
+      0WYcuo 1_13: 746602701
+      0WYcuo 1_53: -960305491
+      0WYcuo 1_56: 852212124
+      0WYcuo 1_16: -836984471
+      0WYcuo 1_68: -143158230
+      0WYcuo 1_8: 319104079
+      0WYcuo 1_4: 1353012808
+      0WYcuo 1_49: 412792039
+      0WYcuo 1_12: -480766290
+      0WYcuo 1_15: -1246871404
+      0WYcuo 1_22: -999712224
+      0WYcuo 1_57: -739615969
+      0WYcuo 1_54: 325814459
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

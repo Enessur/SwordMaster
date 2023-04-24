@@ -232,7 +232,7 @@ MonoBehaviour:
     m_Bits: 128
   damage: 3
   startWaitTime: 1
-  chaseSpeed: 3
+  chaseSpeed: 2.7
   xMin: 0
   yMin: 0
   xMax: 0
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e75db3d6bc6f3548befa04ab244f3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healParticleRb: {fileID: 7496027306882175526, guid: dbab7a1b62deabf4ab165e3c521a2912, type: 3}
   health: 30
 --- !u!95 &6409426723074415482
 Animator:

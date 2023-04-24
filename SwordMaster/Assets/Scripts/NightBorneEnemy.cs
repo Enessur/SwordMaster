@@ -65,7 +65,9 @@ public class NightBorneEnemy : MonoBehaviour
         yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
 
         PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
-        
+
+        TargetManager.Instance.AddEnemy(this.transform);
+
         isTeleporting = false;
         _rb = GetComponent<Rigidbody2D>();
         moveSpot.SetParent(null);
@@ -144,6 +146,7 @@ public class NightBorneEnemy : MonoBehaviour
 
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
+                TargetManager.Instance.RemoveEnemy(this.transform);
                 break;
             case TaskCycleEnemy.Teleport:
                 Teleport();

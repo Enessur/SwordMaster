@@ -12,8 +12,8 @@ public class BasicEnemy : MonoBehaviour
         Death,
         Patrol,
     }
-    
-    
+
+
     [SerializeField] private TaskCycleEnemy taskCycleEnemy;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform attackPos;
@@ -21,16 +21,16 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float startWaitTime = 1f;
     [SerializeField] private float chaseSpeed;
-    [SerializeField] private float xMin ,yMin,xMax,yMax;
+    [SerializeField] private float xMin, yMin, xMax, yMax;
     [SerializeField] private float chasingDistance;
     [SerializeField] private float attackDistance;
     [SerializeField] private float attackRange = 1f;
-    
-  
+
+
     public Transform moveSpot;
     public float patrolSpeed;
     public GameObject PatrolBorders;
-    
+
     private EnemyHealth _enemyHealth;
     private Rigidbody2D _rb;
     private Transform _target;
@@ -39,47 +39,47 @@ public class BasicEnemy : MonoBehaviour
     private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
-    private int _currentHealth;
     private bool _isDamageTaken = false;
+    private int _currentHealth;
     private Vector3 PatrolPos;
-    
-    
+
+
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
     const string ENEMY_ATTACK = "Attack";
     const string ENEMY_DEATH = "Death";
-   
+
     void Start()
     {
         BoxCollider2D squareCollider = PatrolBorders.GetComponent<BoxCollider2D>();
-        
+
         xMin = PatrolBorders.transform.position.x - squareCollider.size.x / 2;
         xMax = PatrolBorders.transform.position.x + squareCollider.size.x / 2;
         yMin = PatrolBorders.transform.position.y - squareCollider.size.y / 2;
         yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
-        
+
         PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
-        
+
+        TargetManager.Instance.AddEnemy(this.transform);
+
         _rb = GetComponent<Rigidbody2D>();
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
-       
+
         PatrolBorders.transform.parent = null;
     }
-    
-    
+
     void Update()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
-        
-            if (!_isDamageTaken)
-            {
-                _enemyHealth.OnDamageTaken += OnDamageTaken;
-                
-                _isDamageTaken = true;
-            }
-       
+
+        if (!_isDamageTaken)
+        {
+            _enemyHealth.OnDamageTaken += OnDamageTaken;
+
+            _isDamageTaken = true;
+        }
 
         _currentHealth = GetComponent<EnemyHealth>().health;
 
@@ -119,7 +119,8 @@ public class BasicEnemy : MonoBehaviour
             case TaskCycleEnemy.Patrol:
                 PatrolPosition();
                 transform.position =
-                    transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
+                    transform.position =
+                        Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
                 moveSpot.position = PatrolPos;
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
@@ -134,30 +135,26 @@ public class BasicEnemy : MonoBehaviour
 
             case TaskCycleEnemy.Death:
                 ChangeAnimationState(ENEMY_DEATH);
+                TargetManager.Instance.RemoveEnemy(this.transform);
                 break;
-            
         }
     }
-    
-    
+
     private void PatrolPosition()
     {
         _patrolTimer += Time.deltaTime;
 
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
+        
+        transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
 
-        transform.position =
-            transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
-       
-        if (transform.position == (Vector3) PatrolPos)
+        if (transform.position == (Vector3)PatrolPos)
         {
             PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
         }
     }
-    
-    
-    
+
     private void Attack()
     {
         if (_canAttack)
@@ -167,8 +164,7 @@ public class BasicEnemy : MonoBehaviour
             _canAttack = false;
         }
     }
-    
-    
+
     private void AttackInterval()
     {
         _canAttack = true;
@@ -178,7 +174,6 @@ public class BasicEnemy : MonoBehaviour
     {
         _canMove = true;
     }
-
 
     private void DestroyEnemy()
     {
@@ -196,7 +191,7 @@ public class BasicEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
-    
+
     private void hit()
     {
         Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsPlayer);
@@ -212,7 +207,7 @@ public class BasicEnemy : MonoBehaviour
         _canMove = false;
         OnDestroy();
     }
-    
+
     private void OnDestroy()
     {
         _enemyHealth.OnDamageTaken -= OnDamageTaken;
@@ -222,7 +217,7 @@ public class BasicEnemy : MonoBehaviour
     {
         spriteRenderer.flipX = (transform.position.x - dest.position.x < 0);
     }
-    
+
     void ChangeAnimationState(string newState)
     {
         //stop the same animation from interrupting itself
@@ -234,5 +229,4 @@ public class BasicEnemy : MonoBehaviour
         //play the animation
         _animator.Play(newState);
     }
-
 }
