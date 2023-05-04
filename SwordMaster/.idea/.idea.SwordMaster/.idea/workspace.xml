@@ -8,11 +8,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DashEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MeteoriteSpell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TargetManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.6/Tests/Runtime/Shared/090-Vectors-BinaryOperators-Float3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_SpriteAnimator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -120,7 +122,14 @@
       <workItem from="1681902982969" duration="1610000" />
       <workItem from="1681986354816" duration="10544000" />
       <workItem from="1682259435519" duration="1415000" />
-      <workItem from="1682351494302" duration="11080000" />
+      <workItem from="1682351494302" duration="12193000" />
+      <workItem from="1682419480005" duration="628000" />
+      <workItem from="1682524426522" duration="5861000" />
+      <workItem from="1682761293347" duration="2092000" />
+      <workItem from="1683023939548" duration="695000" />
+      <workItem from="1683037515893" duration="5604000" />
+      <workItem from="1683128296241" duration="2163000" />
+      <workItem from="1683217746289" duration="3366000" />
     </task>
     <servers />
   </component>

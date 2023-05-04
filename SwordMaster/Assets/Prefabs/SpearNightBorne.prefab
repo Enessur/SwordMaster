@@ -110,7 +110,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 5
+  damage: 6
   startWaitTime: 1
   chaseSpeed: 7
   xMin: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healParticleRb: {fileID: 7496027306882175526, guid: dbab7a1b62deabf4ab165e3c521a2912, type: 3}
-  health: 30
+  health: 67
 --- !u!50 &5892929489905197103
 Rigidbody2D:
   serializedVersion: 4
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5892929489979771376}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EnemyAttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5892929490063033852}
   - component: {fileID: 5892929490063033853}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PatrolBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5892929490460565874}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'PatrolPos '
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}

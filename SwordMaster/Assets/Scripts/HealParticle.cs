@@ -10,6 +10,9 @@ public class HealParticle : MonoBehaviour
     [SerializeField] private GameObject healRb;
     [SerializeField] private float particleSpeed;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private int heal = 5;
+
+    public GameObject healParticle;
     private Animator _animator;
     private string _currentAnimation;
 
@@ -24,7 +27,6 @@ public class HealParticle : MonoBehaviour
 
     void FixedUpdate()
     {
-        
         transform.position = Vector2.MoveTowards(transform.position, _target.position, particleSpeed * Time.deltaTime);
      
         if (Vector2.Distance(_target.position, transform.position)< 0.5f)
@@ -39,7 +41,12 @@ public class HealParticle : MonoBehaviour
         }
        
     }
-    
+
+    private void Heal()
+    {
+        PlayerContoller.Instance.GetHeal(heal);
+    }
+   
     void ChangeAnimationState(string newState)
     {
         //stop the same animation from interrupting itself
@@ -53,6 +60,6 @@ public class HealParticle : MonoBehaviour
     }
     private void Destroy()
     {
-        Destroy(gameObject);
+        Destroy(healRb);
     }
 }

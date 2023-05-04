@@ -6,16 +6,35 @@ using UnityEngine;
 using CodeMonkey.Utils;
 using TMPro;
 
+
 public class PlayerContoller : MonoBehaviour
 {
+    
+    
+    public static PlayerContoller Instance;
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
+
+    
     public enum TaskCycles
     {
         Move,
-        Attack
+        Attack,
+        // Rolling
     }
 
+    
     public int playerHealth;
 
+    public Ghost ghost;
+    public bool makeGhost = false;
+    
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashAmount = 50f;
     [SerializeField] private Transform attackPos;
@@ -24,9 +43,12 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
-
+    [SerializeField] private LayerMask dashLayerMask;
+    
+    
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
+    private Vector3 _rollDir;
     private Animator _animator;
     private string _currentAnimation;
     private bool _isDashButtonDown;
@@ -35,13 +57,17 @@ public class PlayerContoller : MonoBehaviour
     private bool _canAttack = true;
     private int _attackNum = 0;
     private Shake _shake;
-
+    private int _playerMaxHealt;
+    // private float _rollSpeed;
+ 
     //Animation States
     const string PLAYER_IDLE = "Idle";
     const string PLAYER_RUN = "Run";
     const string PLAYER_ATTACK1 = "Attack1";
     const string PLAYER_ATTACK2 = "Attack2";
     const string PLAYER_ATTACK3 = "Attack3";
+    const string PLAYER_ATTACK4 = "Attack4";
+    const string PLAYER_ATTACK5 = "Attack5";
     const string TAKE_DAMAGE = "TakeDamage";
     const string DEATH = "Death";
 
@@ -54,6 +80,7 @@ public class PlayerContoller : MonoBehaviour
         _animator = GetComponent<Animator>();
         _canMove = true;
         _canAttack = true;
+        _playerMaxHealt = playerHealth;
     }
 
     void Update()
@@ -61,7 +88,12 @@ public class PlayerContoller : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             taskCycle = TaskCycles.Attack;
+            
         }
+        // else if (Input.GetKeyDown(KeyCode.LeftControl))
+        // {
+        //     taskCycle = TaskCycles.Rolling;
+        // }
         else
         {
             taskCycle = TaskCycles.Move;
@@ -73,7 +105,12 @@ public class PlayerContoller : MonoBehaviour
 
                 HandleControl();
                 break;
-
+          
+            // case TaskCycles.Rolling:
+            //     _rb.velocity = _rollDir * _rollSpeed;
+            //     
+            //     break;
+                
             case TaskCycles.Attack:
                 Attack();
                 break;
@@ -88,6 +125,11 @@ public class PlayerContoller : MonoBehaviour
         {
             Vector3 dashPosition = transform.position + _moveDir * dashAmount;
 
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _moveDir, dashAmount, dashLayerMask);
+            if (raycastHit2D.collider != null)
+            {
+                dashPosition = raycastHit2D.point;
+            }
             _rb.MovePosition(dashPosition);
             _isDashButtonDown = false;
         }
@@ -129,17 +171,25 @@ public class PlayerContoller : MonoBehaviour
 
             if (moveX != 0 || (moveY != 0))
             {
+                ghost.makeGhost = true;
                 ChangeAnimationState(PLAYER_RUN);
             }
             else
             {
                 ChangeAnimationState(PLAYER_IDLE);
+                ghost.makeGhost = false;
             }
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 _isDashButtonDown = true;
+                ghost.makeGhost = true;
             }
+            // if (Input.GetKeyDown(KeyCode.LeftControl))
+            // {
+            //     _rollDir = _moveDir;
+            //     ghost.makeGhost = true;
+            // }
         }
         else
         {
@@ -172,6 +222,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void Attack()
     {
+        ghost.makeGhost = true;
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
         Vector3 attackDir = (mousePosition - transform.position);
         // CMDebug.TextPopupMouse("" + attackDir);
@@ -204,6 +255,16 @@ public class PlayerContoller : MonoBehaviour
             if (_attackNum == 3)
             {
                 ChangeAnimationState(PLAYER_ATTACK3);
+               
+            }
+            if (_attackNum == 4)
+            {
+                ChangeAnimationState(PLAYER_ATTACK4);
+               
+            }
+            if (_attackNum == 5)
+            {
+                ChangeAnimationState(PLAYER_ATTACK5);
                 _attackNum = 0;
             }
 
@@ -256,4 +317,15 @@ public class PlayerContoller : MonoBehaviour
             Debug.Log("Player health : " + playerHealth);
         }
     }
+
+    
+    public void GetHeal(int getHeal)
+    {
+        playerHealth += getHeal;
+        if (playerHealth > _playerMaxHealt)
+        {
+            playerHealth = _playerMaxHealt;
+        }
+    }
+    
 }

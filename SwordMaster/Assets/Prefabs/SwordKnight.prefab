@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3792677576581869448}
   - component: {fileID: 3792677576581869447}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PatrolBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 5
+  damage: 7
   startWaitTime: 1
   chaseSpeed: 4
   xMin: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   yMax: 0
   chasingDistance: 10
   attackDistance: 3
-  attackRange: 2.51
+  attackRange: 2.87
   moveSpot: {fileID: 3792677577129299055}
   patrolSpeed: 3
   PatrolBorders: {fileID: 3792677576581869446}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healParticleRb: {fileID: 7496027306882175526, guid: dbab7a1b62deabf4ab165e3c521a2912, type: 3}
-  health: 30
+  health: 75
 --- !u!50 &3792677576668026497
 Rigidbody2D:
   serializedVersion: 4

@@ -102,6 +102,7 @@ MonoBehaviour:
   healRb: {fileID: 7496027306882175526}
   particleSpeed: 15
   spriteRenderer: {fileID: 7496027306882175520}
+  heal: 5
 --- !u!96 &7496027306882175522
 TrailRenderer:
   serializedVersion: 2

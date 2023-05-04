@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8923223253938696629}
   - component: {fileID: 8923223253938696630}
   - component: {fileID: 8923223253938696633}
+  - component: {fileID: 5078281485610526932}
   - component: {fileID: 8923223253938696628}
   - component: {fileID: 8923223253938696635}
   - component: {fileID: 8923223253938696632}
@@ -135,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 30
+  ghost: {fileID: 5078281485610526932}
+  makeGhost: 0
   moveSpeed: 10
   dashAmount: 3
   attackPos: {fileID: 8923223253883920632}
@@ -145,6 +148,21 @@ MonoBehaviour:
   damage: 10
   taskCycle: 0
   _renderer: {fileID: 8923223253938696630}
+--- !u!114 &5078281485610526932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923223253938696624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc91c0ecf960a04fa802fe12dc47f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostDelay: 0.1
+  ghost: {fileID: 783131989296737550, guid: 1c0fe96642ad15d41823de2cc6f01b82, type: 3}
+  makeGhost: 0
 --- !u!50 &8923223253938696628
 Rigidbody2D:
   serializedVersion: 4
