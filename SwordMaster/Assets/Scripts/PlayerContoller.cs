@@ -9,19 +9,21 @@ using TMPro;
 
 public class PlayerContoller : MonoBehaviour
 {
-    
-    
     public static PlayerContoller Instance;
 
-    private void Awake() {
-        if (Instance == null) {
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
-        } else {
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
 
-    
+
     public enum TaskCycles
     {
         Move,
@@ -29,13 +31,14 @@ public class PlayerContoller : MonoBehaviour
         // Rolling
     }
 
-    
+
     public int playerHealth;
 
     public Ghost ghost;
     public bool makeGhost = false;
-    
+
     [SerializeField] private float moveSpeed = 60f;
+    [SerializeField] private float dashSpeed = 5f;
     [SerializeField] private float dashAmount = 50f;
     [SerializeField] private Transform attackPos;
     [SerializeField] private float attackRange;
@@ -44,8 +47,8 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private LayerMask dashLayerMask;
-    
-    
+
+
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
     private Vector3 _rollDir;
@@ -57,9 +60,10 @@ public class PlayerContoller : MonoBehaviour
     private bool _canAttack = true;
     private int _attackNum = 0;
     private Shake _shake;
+
     private int _playerMaxHealt;
     // private float _rollSpeed;
- 
+
     //Animation States
     const string PLAYER_IDLE = "Idle";
     const string PLAYER_RUN = "Run";
@@ -70,6 +74,7 @@ public class PlayerContoller : MonoBehaviour
     const string PLAYER_ATTACK5 = "Attack5";
     const string TAKE_DAMAGE = "TakeDamage";
     const string DEATH = "Death";
+    const string DASH = "Dash";
 
 
     private void Start()
@@ -88,7 +93,6 @@ public class PlayerContoller : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             taskCycle = TaskCycles.Attack;
-            
         }
         // else if (Input.GetKeyDown(KeyCode.LeftControl))
         // {
@@ -105,12 +109,12 @@ public class PlayerContoller : MonoBehaviour
 
                 HandleControl();
                 break;
-          
+
             // case TaskCycles.Rolling:
             //     _rb.velocity = _rollDir * _rollSpeed;
             //     
             //     break;
-                
+
             case TaskCycles.Attack:
                 Attack();
                 break;
@@ -119,21 +123,16 @@ public class PlayerContoller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = _moveDir * moveSpeed;
-
         if (_isDashButtonDown)
         {
-            Vector3 dashPosition = transform.position + _moveDir * dashAmount;
-
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _moveDir, dashAmount, dashLayerMask);
-            if (raycastHit2D.collider != null)
-            {
-                dashPosition = raycastHit2D.point;
-            }
-            _rb.MovePosition(dashPosition);
-            _isDashButtonDown = false;
+            _rb.velocity = _moveDir * (moveSpeed + dashSpeed);
+        }
+        else
+        {
+            _rb.velocity = _moveDir * moveSpeed;
         }
     }
+
 
     private void HandleControl()
     {
@@ -172,24 +171,23 @@ public class PlayerContoller : MonoBehaviour
             if (moveX != 0 || (moveY != 0))
             {
                 ghost.makeGhost = true;
-                ChangeAnimationState(PLAYER_RUN);
+                if (_isDashButtonDown != true)
+                {
+                    ChangeAnimationState(PLAYER_RUN);
+                }
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    Dash();
+                }
             }
             else
             {
                 ChangeAnimationState(PLAYER_IDLE);
                 ghost.makeGhost = false;
+                _isDashButtonDown = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                _isDashButtonDown = true;
-                ghost.makeGhost = true;
-            }
-            // if (Input.GetKeyDown(KeyCode.LeftControl))
-            // {
-            //     _rollDir = _moveDir;
-            //     ghost.makeGhost = true;
-            // }
+           
         }
         else
         {
@@ -209,13 +207,26 @@ public class PlayerContoller : MonoBehaviour
         _animator.Play(newState);
     }
 
+    private void Dash()
+    {
+        _canAttack = false;
+        _isDashButtonDown = true;
+        ghost.makeGhost = true;
+        ChangeAnimationState(DASH);
+    }
+
+    private void FinishDash()
+    {
+        _isDashButtonDown = false;
+    }
+
     private void hit()
     {
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             _shake.CamShake();
-          //  EnemyHealth.Instance.TakeDamage(damage);
+            //  EnemyHealth.Instance.TakeDamage(damage);
             enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
         }
     }
@@ -255,13 +266,13 @@ public class PlayerContoller : MonoBehaviour
             if (_attackNum == 3)
             {
                 ChangeAnimationState(PLAYER_ATTACK3);
-               
             }
+
             if (_attackNum == 4)
             {
                 ChangeAnimationState(PLAYER_ATTACK4);
-               
             }
+
             if (_attackNum == 5)
             {
                 ChangeAnimationState(PLAYER_ATTACK5);
@@ -292,6 +303,7 @@ public class PlayerContoller : MonoBehaviour
     {
         _canAttack = false;
         _canMove = false;
+        _isDashButtonDown = false;
     }
 
     public void Cleanse()
@@ -318,7 +330,7 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
-    
+
     public void GetHeal(int getHeal)
     {
         playerHealth += getHeal;
@@ -327,5 +339,4 @@ public class PlayerContoller : MonoBehaviour
             playerHealth = _playerMaxHealt;
         }
     }
-    
 }

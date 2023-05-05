@@ -14,6 +14,7 @@ public class HealParticle : MonoBehaviour
 
     public GameObject healParticle;
     private Animator _animator;
+    private float followdistance = 0.5f;
     private string _currentAnimation;
 
     const string HEAL = "Heal"; 
@@ -27,9 +28,9 @@ public class HealParticle : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _target.position, particleSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _target.position, particleSpeed * Time.deltaTime / 0.5f);
      
-        if (Vector2.Distance(_target.position, transform.position)< 0.5f)
+        if (Vector2.Distance(_target.position, transform.position)< followdistance)
         {
             //todo: add heal animation listener and add heal to the player.
             ChangeAnimationState(HEAL);
@@ -45,6 +46,8 @@ public class HealParticle : MonoBehaviour
     private void Heal()
     {
         PlayerContoller.Instance.GetHeal(heal);
+        followdistance = 10f;
+
     }
    
     void ChangeAnimationState(string newState)

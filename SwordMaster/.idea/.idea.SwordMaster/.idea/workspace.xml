@@ -8,7 +8,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DashEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MeteoriteSpell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shake.cs" root0="FORCE_HIGHLIGHTING" />
@@ -129,7 +128,9 @@
       <workItem from="1683023939548" duration="695000" />
       <workItem from="1683037515893" duration="5604000" />
       <workItem from="1683128296241" duration="2163000" />
-      <workItem from="1683217746289" duration="3366000" />
+      <workItem from="1683217746289" duration="6143000" />
+      <workItem from="1683229142646" duration="4621000" />
+      <workItem from="1683278874168" duration="605000" />
     </task>
     <servers />
   </component>
