@@ -139,15 +139,19 @@ MonoBehaviour:
   ghost: {fileID: 5078281485610526932}
   makeGhost: 0
   moveSpeed: 10
+  dashSpeed: 10
   dashAmount: 3
   attackPos: {fileID: 8923223253883920632}
   attackRange: 0.87
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 64
-  damage: 10
+  damage: 7
   taskCycle: 0
   _renderer: {fileID: 8923223253938696630}
+  dashLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &5078281485610526932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostDelay: 0.1
   ghost: {fileID: 783131989296737550, guid: 1c0fe96642ad15d41823de2cc6f01b82, type: 3}
-  makeGhost: 0
+  makeGhost: 1
 --- !u!50 &8923223253938696628
 Rigidbody2D:
   serializedVersion: 4

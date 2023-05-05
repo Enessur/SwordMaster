@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using CodeMonkey;
 using UnityEngine;
 using CodeMonkey.Utils;
-using TMPro;
+using Random = System.Random;
 
 
 public class PlayerContoller : MonoBehaviour
@@ -86,6 +86,7 @@ public class PlayerContoller : MonoBehaviour
         _canMove = true;
         _canAttack = true;
         _playerMaxHealt = playerHealth;
+        
     }
 
     void Update()
@@ -252,6 +253,7 @@ public class PlayerContoller : MonoBehaviour
         {
             _canMove = false;
             _attackNum++;
+            
 
             if (_attackNum == 1)
             {

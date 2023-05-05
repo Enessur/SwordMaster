@@ -9,17 +9,20 @@ public class EnemyHealth : MonoBehaviour
     public int health = 30;
     public event Action<int> OnDamageTaken;
 
+
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (OnDamageTaken != null)
+        if (health >= 0)
         {
-            OnDamageTaken(damage);
+            health -= damage;
+            if (OnDamageTaken != null)
+            {
+                OnDamageTaken(damage);
+            }
         }
-
-        if (health < 1)
+        else
         {
-            Instantiate(healParticleRb,transform.position,transform.rotation);
+            Instantiate(healParticleRb, transform.position, transform.rotation);
         }
     }
 }
