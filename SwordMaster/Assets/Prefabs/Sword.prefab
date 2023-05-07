@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3750667117785a4f9d5fa6e5bd5664e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordPatrolRange: 10
+  swordPatrolRange: 12
   taskCycleSword: 2
   spriteRenderer: {fileID: 9162850470018027431}
   chaseSpeed: 7
@@ -131,7 +131,7 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 64
-  damage: 5
+  damage: 6
 --- !u!1 &9162850470529523102
 GameObject:
   m_ObjectHideFlags: 0

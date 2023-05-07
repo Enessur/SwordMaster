@@ -28,18 +28,16 @@ public class PlayerContoller : MonoBehaviour
     {
         Move,
         Attack,
-        // Rolling
     }
 
 
     public int playerHealth;
-
+    public HealthBar healthbar;
     public Ghost ghost;
     public bool makeGhost = false;
 
     [SerializeField] private float moveSpeed = 60f;
     [SerializeField] private float dashSpeed = 5f;
-    [SerializeField] private float dashAmount = 50f;
     [SerializeField] private Transform attackPos;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask whatIsEnemies;
@@ -62,7 +60,7 @@ public class PlayerContoller : MonoBehaviour
     private Shake _shake;
 
     private int _playerMaxHealt;
-    // private float _rollSpeed;
+
 
     //Animation States
     const string PLAYER_IDLE = "Idle";
@@ -86,7 +84,7 @@ public class PlayerContoller : MonoBehaviour
         _canMove = true;
         _canAttack = true;
         _playerMaxHealt = playerHealth;
-        
+        healthbar.SetMaxHealth(playerHealth);
     }
 
     void Update()
@@ -95,10 +93,7 @@ public class PlayerContoller : MonoBehaviour
         {
             taskCycle = TaskCycles.Attack;
         }
-        // else if (Input.GetKeyDown(KeyCode.LeftControl))
-        // {
-        //     taskCycle = TaskCycles.Rolling;
-        // }
+
         else
         {
             taskCycle = TaskCycles.Move;
@@ -110,11 +105,6 @@ public class PlayerContoller : MonoBehaviour
 
                 HandleControl();
                 break;
-
-            // case TaskCycles.Rolling:
-            //     _rb.velocity = _rollDir * _rollSpeed;
-            //     
-            //     break;
 
             case TaskCycles.Attack:
                 Attack();
@@ -141,8 +131,6 @@ public class PlayerContoller : MonoBehaviour
         float moveY = 0f;
         if (_canMove == true)
         {
-            //todo:find a better way to use flipX
-
             if (Input.GetKey(KeyCode.W))
             {
                 moveY = +1f;
@@ -176,6 +164,7 @@ public class PlayerContoller : MonoBehaviour
                 {
                     ChangeAnimationState(PLAYER_RUN);
                 }
+
                 if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
                     Dash();
@@ -187,8 +176,6 @@ public class PlayerContoller : MonoBehaviour
                 ghost.makeGhost = false;
                 _isDashButtonDown = false;
             }
-
-           
         }
         else
         {
@@ -227,7 +214,6 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             _shake.CamShake();
-            //  EnemyHealth.Instance.TakeDamage(damage);
             enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
         }
     }
@@ -237,7 +223,7 @@ public class PlayerContoller : MonoBehaviour
         ghost.makeGhost = true;
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
         Vector3 attackDir = (mousePosition - transform.position);
-        // CMDebug.TextPopupMouse("" + attackDir);
+
         if (attackDir.x < 0)
         {
             _renderer.flipX = true;
@@ -253,7 +239,7 @@ public class PlayerContoller : MonoBehaviour
         {
             _canMove = false;
             _attackNum++;
-            
+
 
             if (_attackNum == 1)
             {
@@ -316,20 +302,20 @@ public class PlayerContoller : MonoBehaviour
 
     public void TakeDamage(int takendamage)
     {
+        playerHealth -= takendamage;
+        ChangeAnimationState(TAKE_DAMAGE);
+        _shake.CamShake();
+        Stop();
+
         if (playerHealth < 1)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
             ChangeAnimationState(DEATH);
             Stop();
         }
-        else
-        {
-            playerHealth -= takendamage;
-            ChangeAnimationState(TAKE_DAMAGE);
-            _shake.CamShake();
-            Stop();
-            Debug.Log("Player health : " + playerHealth);
-        }
+
+
+        healthbar.SetHealth(playerHealth);
     }
 
 
@@ -340,5 +326,7 @@ public class PlayerContoller : MonoBehaviour
         {
             playerHealth = _playerMaxHealt;
         }
+
+        healthbar.SetHealth(playerHealth);
     }
 }

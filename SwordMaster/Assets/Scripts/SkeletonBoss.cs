@@ -56,6 +56,7 @@ public class SkeletonBoss : MonoBehaviour
     const string ENEMY_RUN = "Run";
     const string ENEMY_ATTACK = "Attack";
     const string ENEMY_CASTSPELL = "CastSpell";
+
     const string ENEMY_DEATH = "Death";
     //const string ENEMY_TAKEDAMAGE = "TakeDamage";
 
@@ -173,9 +174,7 @@ public class SkeletonBoss : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
-        Debug.Log("Damage taken: " + damage);
         _isDamageTaken = false;
-       // ChangeAnimationState(ENEMY_TAKEDAMAGE);
     }
 
     private void OnDestroy()
@@ -194,7 +193,7 @@ public class SkeletonBoss : MonoBehaviour
 
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
-        
+
         transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
 
         if (transform.position == (Vector3)PatrolPos)
@@ -263,10 +262,8 @@ public class SkeletonBoss : MonoBehaviour
 
     private void CastSpell()
     {
+        _attackNum = Random.Range(1, 4);
        
-        
-        _attackNum = Random.Range(1,4);
-        Debug.Log(_attackNum);
         if (_attackNum == 1)
         {
             Instantiate(blastSpellRb, _target.position, _target.rotation);
@@ -290,7 +287,7 @@ public class SkeletonBoss : MonoBehaviour
         attackDistance = 2f;
         chasingDistance = 3f;
     }
-    
+
     private void DestroyEnemy()
     {
         Destroy(gameObject);
@@ -300,11 +297,6 @@ public class SkeletonBoss : MonoBehaviour
     {
         _canAttack = true;
         _canMove = true;
-    }
-
-    public void gethit()
-    {
-       // ChangeAnimationState(ENEMY_TAKEDAMAGE);
     }
 
     public void die()

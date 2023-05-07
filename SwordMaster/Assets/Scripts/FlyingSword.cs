@@ -35,12 +35,12 @@ public class FlyingSword : MonoBehaviour
     private float currentAngle;
     private int _attackNum;
 
-    //Animation
     private string _currentAnimation;
     private Animator _animator;
     private bool _canAttack = true;
     private bool _canMove = true;
 
+    //Animation
     const string ATTACK_1 = "SliceAttack";
     const string ATTACK_2 = "DownUpAttack";
     const string ATTACK_3 = "UpDownAttack";
@@ -49,7 +49,6 @@ public class FlyingSword : MonoBehaviour
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-       // _enemyTarget = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         TargetManager.Instance.GetSword(swordPatrolRange);
@@ -113,16 +112,13 @@ public class FlyingSword : MonoBehaviour
                     _followPosition = targetPosition + _offsetLeft;
                     _animator.SetBool("Mirror", false);
                     transform.rotation = Quaternion.Euler(0, 180f, 41f);
-                    Debug.Log("Left attack");
-                    //attackPos.position = transform.position + new Vector3(-1.4f, 0f, 0f);
+
                 }
                 else
                 {
                     _followPosition = targetPosition + _offsetRight;
                     _animator.SetBool("Mirror", true);
                     transform.rotation = Quaternion.Euler(0, 0, 41f);
-                    Debug.Log("Right attack");
-                    //attackPos.position = transform.position + new Vector3(+1.4f, 0f, 0f);
                 }
 
                 transform.position = new Vector2(newPosition.x, newPosition.y);
@@ -140,14 +136,12 @@ public class FlyingSword : MonoBehaviour
                     _followPosition = enemyPosition + _offsetLeft;
                    
                     transform.rotation = Quaternion.Euler(0, 0, 41f);
-                    Debug.Log("Left attack");
                 }
                 else
                 {
                     _followPosition = enemyPosition + _offsetRight;
                    
                     transform.rotation = Quaternion.Euler(0, 180f, 41f);
-                    Debug.Log("Right attack");
                 }
 
                 direction = (_followPosition - swordPosition);
@@ -209,7 +203,7 @@ public class FlyingSword : MonoBehaviour
     private void AttackAnim()
     {
         _attackNum = Random.Range(1,4);
-        Debug.Log(_attackNum);
+        
         if (_attackNum == 1)
         {
             ChangeAnimationState(ATTACK_1);

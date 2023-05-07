@@ -9,9 +9,8 @@ public class EchoEffect : MonoBehaviour
     public float startTimeBtwSpawns;
 
     public GameObject echo;
-    
-    
-  
+
+
     void Update()
     {
         if (timeBtwSpawns <= 0)
@@ -23,6 +22,5 @@ public class EchoEffect : MonoBehaviour
         {
             timeBtwSpawns -= Time.deltaTime;
         }
-
     }
 }

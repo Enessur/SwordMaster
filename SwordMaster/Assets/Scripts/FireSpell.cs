@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class FireSpell : MonoBehaviour
 {
-    [SerializeField] private GameObject spellRb;
     [SerializeField] private Transform attackPos;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private int damage;
-    private bool chase;
+   
+    private bool _chase;
     private Transform _target;
 
     void Start()
     {
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         transform.position = _target.position + new Vector3(0f, -1f, 0f);
-        chase = true;
+        _chase = true;
     }
 
     private void FixedUpdate()
     {
-        if (chase == true)
+        if (_chase == true)
         {
             transform.position = _target.position + new Vector3(0f, -1f, 0f);
         }
@@ -55,6 +55,6 @@ public class FireSpell : MonoBehaviour
 
     private void StopChase()
     {
-        chase = false;
+        _chase = false;
     }
 }

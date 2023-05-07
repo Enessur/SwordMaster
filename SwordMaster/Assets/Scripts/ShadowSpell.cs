@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShadowSpell : MonoBehaviour
 {
-    [SerializeField] private GameObject shadowRb;
     [SerializeField] private Transform attackPos;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private float attackRange = 1f;

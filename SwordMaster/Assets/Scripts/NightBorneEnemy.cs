@@ -192,8 +192,8 @@ public class NightBorneEnemy : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
-        Debug.Log("Damage taken: " + damage);
         _canMove = false;
+        _isDamageTaken = false;
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
         OnDestroy();
     }

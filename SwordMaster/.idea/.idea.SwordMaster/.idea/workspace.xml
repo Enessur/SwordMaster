@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/HealthBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MeteoriteSpell.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shake.cs" root0="FORCE_HIGHLIGHTING" />
@@ -131,7 +132,10 @@
       <workItem from="1683217746289" duration="6143000" />
       <workItem from="1683229142646" duration="4621000" />
       <workItem from="1683278874168" duration="605000" />
-      <workItem from="1683289981231" duration="1457000" />
+      <workItem from="1683289981231" duration="5044000" />
+      <workItem from="1683367595973" duration="1808000" />
+      <workItem from="1683374075314" duration="50000" />
+      <workItem from="1683455774333" duration="7067000" />
     </task>
     <servers />
   </component>

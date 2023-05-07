@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BlastSpell : MonoBehaviour
 {
-    [SerializeField] private GameObject spellRb;
     [SerializeField] private Transform attackPos;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private float attackRange = 1f;

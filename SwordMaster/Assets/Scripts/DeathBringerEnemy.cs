@@ -165,7 +165,6 @@ public class DeathBringerEnemy : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
-        Debug.Log("Damage taken: " + damage);
         _isDamageTaken = false;
         ChangeAnimationState(ENEMY_TAKEDAMAGE);
     }

@@ -117,7 +117,7 @@ MonoBehaviour:
   yMin: 0
   xMax: 0
   yMax: 0
-  chasingDistance: 5
+  chasingDistance: 7
   attackDistance: 1.57
   attackRange: 1.82
   moveSpot: {fileID: 7010142613012852666}
@@ -177,7 +177,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!58 &7010142612719747736
 CircleCollider2D:
   m_ObjectHideFlags: 0

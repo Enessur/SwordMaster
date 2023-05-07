@@ -41,7 +41,7 @@ public class BasicEnemy : MonoBehaviour
     private bool _canMove = true;
     private bool _isDamageTaken = false;
     private int _currentHealth;
-    private Vector3 PatrolPos;
+    private Vector3 _patrolPos;
 
 
     const string ENEMY_IDLE = "Idle";
@@ -58,7 +58,7 @@ public class BasicEnemy : MonoBehaviour
         yMin = PatrolBorders.transform.position.y - squareCollider.size.y / 2;
         yMax = PatrolBorders.transform.position.y + squareCollider.size.y / 2;
 
-        PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        _patrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
         TargetManager.Instance.AddEnemy(this.transform);
 
@@ -83,7 +83,7 @@ public class BasicEnemy : MonoBehaviour
 
         _currentHealth = GetComponent<EnemyHealth>().health;
 
-        if (_currentHealth >= 1)
+        if (_currentHealth > 0)
         {
             if (_canMove == true)
             {
@@ -120,8 +120,8 @@ public class BasicEnemy : MonoBehaviour
                 PatrolPosition();
                 transform.position =
                     transform.position =
-                        Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
-                moveSpot.position = PatrolPos;
+                        Vector2.MoveTowards(transform.position, _patrolPos, patrolSpeed * Time.deltaTime);
+                moveSpot.position = _patrolPos;
                 FlipSprite(moveSpot);
                 ChangeAnimationState(ENEMY_RUN);
                 break;
@@ -146,12 +146,12 @@ public class BasicEnemy : MonoBehaviour
 
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
-        
-        transform.position = Vector2.MoveTowards(transform.position, PatrolPos, patrolSpeed * Time.deltaTime);
 
-        if (transform.position == (Vector3)PatrolPos)
+        transform.position = Vector2.MoveTowards(transform.position, _patrolPos, patrolSpeed * Time.deltaTime);
+
+        if (transform.position == (Vector3)_patrolPos)
         {
-            PatrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+            _patrolPos = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
         }
     }
 
@@ -203,7 +203,6 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
-        Debug.Log("Damage taken: " + damage);
         _canMove = false;
         OnDestroy();
     }
