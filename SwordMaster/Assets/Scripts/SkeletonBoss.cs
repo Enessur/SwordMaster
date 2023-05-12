@@ -31,7 +31,8 @@ public class SkeletonBoss : MonoBehaviour
     [SerializeField] private float castDistanceMin;
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private bool oneTime;
-
+    public GameObject healthBar;
+    public BossHealthBar bossHealthBar;
     public float patrolSpeed;
     public GameObject PatrolBorders;
     public Transform moveSpot;
@@ -47,7 +48,8 @@ public class SkeletonBoss : MonoBehaviour
     private string _currentAnimation;
     private bool _canAttack = true;
     private bool _canMove = true;
-
+    private Material matWhite;
+    private Material matDefault;
     private bool _isDamageTaken = false;
     //private bool _IsPlayerAlive = true;
 
@@ -78,6 +80,11 @@ public class SkeletonBoss : MonoBehaviour
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
         PatrolBorders.transform.parent = null;
+        
+        matWhite = Resources.Load("WhiteFlash",typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
+        _currentHealth = GetComponent<EnemyHealth>().health;
+        bossHealthBar.SetMaxHealth(_currentHealth);
     }
 
     void Update()
@@ -110,11 +117,13 @@ public class SkeletonBoss : MonoBehaviour
                 else if ((Vector2.Distance(transform.position, _target.position) > castDistanceMax) &&
                          (Vector2.Distance(transform.position, _target.position) < castDistanceMin))
                 {
+                    healthBar.SetActive(true);
                     taskCycleEnemy = TaskCycleEnemy.CastSpell;
                 }
                 else
                 {
                     taskCycleEnemy = TaskCycleEnemy.Patrol;
+                    healthBar.SetActive(false);
                 }
             }
 
@@ -159,6 +168,7 @@ public class SkeletonBoss : MonoBehaviour
 
             case TaskCycleEnemy.CastSpell:
                 ChangeAnimationState(ENEMY_CASTSPELL);
+               
                 castDistanceMin = 50f;
                 castDistanceMax = 0f;
                 chasingDistance = 0f;
@@ -174,12 +184,17 @@ public class SkeletonBoss : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
+       
         _isDamageTaken = false;
+        OnDestroy();
     }
 
     private void OnDestroy()
     {
+        Hurt();
         _enemyHealth.OnDamageTaken -= OnDamageTaken;
+        _isDamageTaken = false;
+      
     }
 
     private void FlipSprite(Transform dest)
@@ -202,6 +217,18 @@ public class SkeletonBoss : MonoBehaviour
         }
     }
 
+    private void Hurt()
+    {
+      
+        spriteRenderer.material = matWhite;
+        Invoke(nameof(ResetMaterial),.2f);
+    }
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
+        bossHealthBar.SetHealth(_currentHealth);
+
+    }
     private void Attack()
     {
         if (_canAttack)

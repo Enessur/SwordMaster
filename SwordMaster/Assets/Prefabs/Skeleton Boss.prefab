@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5965776, y: -0.08512783}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.794161, y: 11.934164}
+  m_Size: {x: 17.085758, y: 13.959763}
   m_EdgeRadius: 0
 --- !u!1 &1694324688011867321
 GameObject:
@@ -433,8 +433,8 @@ GameObject:
   - component: {fileID: 6547434028358779268}
   - component: {fileID: 6547434028358779271}
   - component: {fileID: 6547434028358779265}
-  - component: {fileID: 6547434028358779269}
   - component: {fileID: 6547434028358779386}
+  - component: {fileID: 6547434028358779269}
   - component: {fileID: 6547434028358779267}
   - component: {fileID: 6547434028358779264}
   m_Layer: 6
@@ -486,7 +486,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -532,27 +532,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healParticleRb: {fileID: 7496027306882175526, guid: dbab7a1b62deabf4ab165e3c521a2912, type: 3}
   health: 350
---- !u!50 &6547434028358779269
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6547434028358779385}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!114 &6547434028358779386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +553,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 7
+  damage: 6
   startWaitTime: 1
   chaseSpeed: 3
   xMin: 0
@@ -587,10 +566,33 @@ MonoBehaviour:
   castDistanceMin: 10
   attackRange: 1.93
   oneTime: 0
+  healthBar: {fileID: 0}
+  bossHealthBar: {fileID: 0}
   patrolSpeed: 2
   PatrolBorders: {fileID: 1400706802955582877}
   moveSpot: {fileID: 6547434028021766524}
   speed: 0
+--- !u!50 &6547434028358779269
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547434028358779385}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!95 &6547434028358779267
 Animator:
   serializedVersion: 4

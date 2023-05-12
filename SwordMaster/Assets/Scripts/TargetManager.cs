@@ -29,6 +29,7 @@ public class TargetManager : Singleton<TargetManager>
     {
         enemyTransforms.Remove(tr);
         CheckWinCondition();
+        EnemyCounter.Instance.EnemyCountDecrease(enemyTransforms.Count);
     }
 
 
@@ -75,6 +76,7 @@ public class TargetManager : Singleton<TargetManager>
 
     public void CheckWinCondition()
     {
+       
         if (IsEnemyEmpty())
         {
            

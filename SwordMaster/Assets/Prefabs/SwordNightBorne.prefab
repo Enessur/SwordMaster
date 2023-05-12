@@ -118,7 +118,7 @@ MonoBehaviour:
   xMax: 0
   yMax: 0
   chasingDistance: 10
-  attackDistance: 3
+  attackDistance: 2.4
   attackRange: 2.51
   moveSpot: {fileID: 8283525364693286455}
   patrolSpeed: 5
