@@ -26,6 +26,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float attackDistance;
     [SerializeField] private float attackRange = 1f;
 
+   
 
     public Transform moveSpot;
     public float patrolSpeed;
@@ -42,7 +43,8 @@ public class BasicEnemy : MonoBehaviour
     private bool _isDamageTaken = false;
     private int _currentHealth;
     private Vector3 _patrolPos;
-
+    private Material matWhite;
+    private Material matDefault;
 
     const string ENEMY_IDLE = "Idle";
     const string ENEMY_RUN = "Run";
@@ -66,7 +68,10 @@ public class BasicEnemy : MonoBehaviour
         moveSpot.SetParent(null);
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        matWhite = Resources.Load("WhiteFlash",typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
         PatrolBorders.transform.parent = null;
     }
 
@@ -77,10 +82,10 @@ public class BasicEnemy : MonoBehaviour
         if (!_isDamageTaken)
         {
             _enemyHealth.OnDamageTaken += OnDamageTaken;
-
+            
             _isDamageTaken = true;
         }
-
+    
         _currentHealth = GetComponent<EnemyHealth>().health;
 
         if (_currentHealth > 0)
@@ -207,9 +212,23 @@ public class BasicEnemy : MonoBehaviour
         OnDestroy();
     }
 
+    private void Hurt()
+    {
+      
+        spriteRenderer.material = matWhite;
+        Invoke(nameof(ResetMaterial),.2f);
+        
+    }
+
+     void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
+    }
     private void OnDestroy()
     {
+        Hurt();
         _enemyHealth.OnDamageTaken -= OnDamageTaken;
+        _isDamageTaken = false;
     }
 
     private void FlipSprite(Transform dest)

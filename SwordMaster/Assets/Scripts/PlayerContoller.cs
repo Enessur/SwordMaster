@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using CodeMonkey;
 using UnityEngine;
 using CodeMonkey.Utils;
-using Random = System.Random;
+using Script;
 
 
 public class PlayerContoller : MonoBehaviour
@@ -44,8 +41,7 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private LayerMask dashLayerMask;
-
+    [SerializeField] private bool oneTime;
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -58,18 +54,21 @@ public class PlayerContoller : MonoBehaviour
     private bool _canAttack = true;
     private int _attackNum = 0;
     private Shake _shake;
-
+    private bool _notWearArmor;
     private int _playerMaxHealt;
 
 
     //Animation States
     const string PLAYER_IDLE = "Idle";
     const string PLAYER_RUN = "Run";
+    const string PLAYER_IDLE_NO_ARMOR = "IdleNoArmor";
+    const string PLAYER_RUN_NO_ARMOR = "RunNoArmor";
     const string PLAYER_ATTACK1 = "Attack1";
     const string PLAYER_ATTACK2 = "Attack2";
     const string PLAYER_ATTACK3 = "Attack3";
     const string PLAYER_ATTACK4 = "Attack4";
     const string PLAYER_ATTACK5 = "Attack5";
+    const string ARMOR_UPGRADE = "WearArmor";
     const string TAKE_DAMAGE = "TakeDamage";
     const string DEATH = "Death";
     const string DASH = "Dash";
@@ -77,6 +76,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void Start()
     {
+        oneTime = false;
         _shake = GameObject.FindWithTag("ScreenShake").GetComponent<Shake>();
         _rb = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
@@ -162,7 +162,14 @@ public class PlayerContoller : MonoBehaviour
                 ghost.makeGhost = true;
                 if (_isDashButtonDown != true)
                 {
-                    ChangeAnimationState(PLAYER_RUN);
+                    if (_notWearArmor == true)
+                    {
+                        ChangeAnimationState(PLAYER_RUN_NO_ARMOR);
+                    }
+                    else
+                    {
+                        ChangeAnimationState(PLAYER_RUN);
+                    }
                 }
 
                 if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -172,7 +179,15 @@ public class PlayerContoller : MonoBehaviour
             }
             else
             {
-                ChangeAnimationState(PLAYER_IDLE);
+                if (_notWearArmor == true)
+                {
+                    ChangeAnimationState(PLAYER_IDLE_NO_ARMOR);
+                }
+                else
+                {
+                    ChangeAnimationState(PLAYER_IDLE);
+                }
+
                 ghost.makeGhost = false;
                 _isDashButtonDown = false;
             }
@@ -197,10 +212,13 @@ public class PlayerContoller : MonoBehaviour
 
     private void Dash()
     {
-        _canAttack = false;
-        _isDashButtonDown = true;
-        ghost.makeGhost = true;
-        ChangeAnimationState(DASH);
+        if (_notWearArmor == false)
+        {
+            _canAttack = false;
+            _isDashButtonDown = true;
+            ghost.makeGhost = true;
+            ChangeAnimationState(DASH);
+        }
     }
 
     private void FinishDash()
@@ -215,6 +233,21 @@ public class PlayerContoller : MonoBehaviour
         {
             _shake.CamShake();
             enemiesToDamage[i].GetComponent<EnemyHealth>().TakeDamage(damage);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Armor"))
+        {
+            Debug.Log("WearArmor!");
+            ChangeAnimationState(ARMOR_UPGRADE);
+            _canMove = false;
+        }
+
+        else if (col.CompareTag("Empty"))
+        {
+            Debug.Log("Empty!");
         }
     }
 
@@ -318,6 +351,12 @@ public class PlayerContoller : MonoBehaviour
         healthbar.SetHealth(playerHealth);
     }
 
+    private void GameOver()
+    {
+        if (oneTime) return;
+        SceneManager.Instance.LoseGame();
+        oneTime = true;
+    }
 
     public void GetHeal(int getHeal)
     {
@@ -328,5 +367,31 @@ public class PlayerContoller : MonoBehaviour
         }
 
         healthbar.SetHealth(playerHealth);
+    }
+
+    public void WearArmor(bool _wearingArmor)
+    {
+        if (_wearingArmor == true)
+        {
+            _notWearArmor = true;
+            _canAttack = false;
+        }
+
+        if (_wearingArmor == false)
+        {
+            _notWearArmor = false;
+        }
+    }
+
+    public void BasicArmor()
+    {
+        _canAttack = false;
+    }
+
+    public void ArmorUpgrade()
+    {
+        _canAttack = true;
+        _notWearArmor = false;
+        _canMove = true;
     }
 }

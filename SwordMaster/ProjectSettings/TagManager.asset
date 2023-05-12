@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ScreenShake
   - Enemy
+  - Empty
+  - Armor
   layers:
   - Default
   - TransparentFX

@@ -290,6 +290,7 @@ public class SkeletonBoss : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        SceneManager.Instance.WinGame();
         Destroy(gameObject);
     }
 
