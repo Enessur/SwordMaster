@@ -8,15 +8,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/BossDoor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/BossHealthBar.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/EnemyCounter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FindArmor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/NextLevel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Car.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MeteoriteSpell.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mustang.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TargetManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Runtime/BurstCompiler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -155,7 +148,17 @@
       <workItem from="1683563384791" duration="3683000" />
       <workItem from="1683803185878" duration="17002000" />
       <workItem from="1683883931058" duration="8693000" />
-      <workItem from="1683902458191" duration="6311000" />
+      <workItem from="1683902458191" duration="6971000" />
+      <workItem from="1684057775567" duration="7788000" />
+      <workItem from="1684149522154" duration="1916000" />
+      <workItem from="1684220158460" duration="901000" />
+      <workItem from="1684233281939" duration="16756000" />
+      <workItem from="1684274053003" duration="1900000" />
+      <workItem from="1684487046096" duration="3109000" />
+      <workItem from="1684504733650" duration="596000" />
+      <workItem from="1684584099845" duration="1984000" />
+      <workItem from="1684668522612" duration="3503000" />
+      <workItem from="1684693940457" duration="3119000" />
     </task>
     <servers />
   </component>

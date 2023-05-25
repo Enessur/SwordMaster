@@ -56,7 +56,6 @@ using UnityEngine;
                 }
                 player.position = playerSpawnPoints[currentLvl].position;
             }
-           
         }
 
         public void Menu()
@@ -67,7 +66,6 @@ using UnityEngine;
 
         public void NextLevel()
         {
-         
             var a = ES3.Load("LevelIndex", 0);
             a++;
             if (levelPrefabs.Length == a)

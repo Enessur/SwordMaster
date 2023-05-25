@@ -25,16 +25,15 @@ public class HealParticle : MonoBehaviour
         _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _animator = GetComponent<Animator>();
     }
-
     void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _target.position, particleSpeed * Time.deltaTime / 0.5f);
+        transform.position =
+            Vector2.MoveTowards(transform.position, _target.position,
+                particleSpeed * Time.deltaTime / 0.5f);
      
         if (Vector2.Distance(_target.position, transform.position)< followdistance)
         {
-            //todo: add heal animation listener and add heal to the player.
             ChangeAnimationState(HEAL);
-            
         }
         else
         {
@@ -42,7 +41,7 @@ public class HealParticle : MonoBehaviour
         }
        
     }
-
+    
     private void Heal()
     {
         PlayerContoller.Instance.GetHeal(heal);

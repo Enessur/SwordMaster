@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8923223253938696629}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &998070367
 MonoBehaviour:
@@ -178,7 +178,6 @@ Transform:
   m_Children:
   - {fileID: 8923223254379561713}
   - {fileID: 8923223253883920632}
-  - {fileID: 8923223254441529113}
   - {fileID: 998070366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -261,9 +260,7 @@ MonoBehaviour:
   damage: 10
   taskCycle: 0
   _renderer: {fileID: 8923223253938696630}
-  dashLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  oneTime: 0
 --- !u!114 &5078281485610526932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,37 +379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camAnim: {fileID: 8923223254445387442}
---- !u!1 &8923223254441529114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8923223254441529113}
-  m_Layer: 7
-  m_Name: SwordPos
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8923223254441529113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8923223254441529114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.09, y: 0.63, z: 10.555779}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8923223253938696629}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8923223254445387343
 GameObject:
   m_ObjectHideFlags: 0

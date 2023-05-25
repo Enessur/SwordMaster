@@ -58,10 +58,8 @@ public class SkeletonBoss : MonoBehaviour
     const string ENEMY_RUN = "Run";
     const string ENEMY_ATTACK = "Attack";
     const string ENEMY_CASTSPELL = "CastSpell";
-
     const string ENEMY_DEATH = "Death";
-    //const string ENEMY_TAKEDAMAGE = "TakeDamage";
-
+     
     void Start()
     {
         BoxCollider2D squareCollider = PatrolBorders.GetComponent<BoxCollider2D>();
@@ -91,13 +89,7 @@ public class SkeletonBoss : MonoBehaviour
     {
         _enemyHealth = GetComponent<EnemyHealth>();
         _currentHealth = GetComponent<EnemyHealth>().health;
-
-        // _playerHealth = GetComponent<PlayerContoller>();
-        // _playerCurrentHealt = GetComponent<PlayerContoller>().playerHealth;
-        // if (_playerCurrentHealt < 1)
-        // {
-        //     _IsPlayerAlive = false;
-        // }
+        
         if (!_isDamageTaken)
         {
             _enemyHealth.OnDamageTaken += OnDamageTaken;

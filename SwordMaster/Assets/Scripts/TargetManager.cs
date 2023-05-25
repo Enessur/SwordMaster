@@ -8,7 +8,6 @@ using UnityEngine.Android;
 public class TargetManager : Singleton<TargetManager>
 {
     public List<Transform> enemyTransforms = new List<Transform>();
-    
     public GameObject closestTarget;
     [SerializeField] private float detectionDistance;
     private Vector3 _offset;
@@ -56,14 +55,11 @@ public class TargetManager : Singleton<TargetManager>
             {
                 return closestTarget.transform;
             }
-
-            //todo: game over ! 
-            
             return null;
         }
-
         return null;
     }
+    
     public bool IsEnemyEmpty()
     {
         return enemyTransforms.Count == 0;

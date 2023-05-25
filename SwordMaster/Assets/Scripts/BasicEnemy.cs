@@ -152,7 +152,8 @@ public class BasicEnemy : MonoBehaviour
         if (!(_patrolTimer >= startWaitTime)) return;
         _patrolTimer = 0;
 
-        transform.position = Vector2.MoveTowards(transform.position, _patrolPos, patrolSpeed * Time.deltaTime);
+        transform.position = 
+            Vector2.MoveTowards(transform.position, _patrolPos, patrolSpeed * Time.deltaTime);
 
         if (transform.position == (Vector3)_patrolPos)
         {
@@ -164,8 +165,8 @@ public class BasicEnemy : MonoBehaviour
     {
         if (_canAttack)
         {
-            _canMove = false;
             ChangeAnimationState(ENEMY_ATTACK);
+            _canMove = false;
             _canAttack = false;
         }
     }
