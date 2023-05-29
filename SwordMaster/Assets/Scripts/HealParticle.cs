@@ -6,13 +6,13 @@ using UnityEngine.Android;
 
 public class HealParticle : MonoBehaviour
 {
+ 
     private Transform _target;
     [SerializeField] private GameObject healRb;
     [SerializeField] private float particleSpeed;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int heal = 5;
-
-    public GameObject healParticle;
+    
     private Animator _animator;
     private float followdistance = 0.5f;
     private string _currentAnimation;
@@ -34,6 +34,7 @@ public class HealParticle : MonoBehaviour
         if (Vector2.Distance(_target.position, transform.position)< followdistance)
         {
             ChangeAnimationState(HEAL);
+           
         }
         else
         {

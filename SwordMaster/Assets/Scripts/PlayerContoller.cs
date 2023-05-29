@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 using Script;
+using UnityEngine.UI;
 
 
 public class PlayerContoller : MonoBehaviour
@@ -42,6 +44,9 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private TaskCycles taskCycle;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private bool oneTime;
+    [SerializeField] private Text Armor;
+    [SerializeField] private GameObject armorCanvas;
+
 
     private Rigidbody2D _rb;
     private Vector3 _moveDir;
@@ -56,7 +61,6 @@ public class PlayerContoller : MonoBehaviour
     private Shake _shake;
     private bool _notWearArmor;
     private int _playerMaxHealt;
-
 
     //Animation States
     const string PLAYER_IDLE = "Idle";
@@ -85,6 +89,8 @@ public class PlayerContoller : MonoBehaviour
         _canAttack = true;
         _playerMaxHealt = playerHealth;
         healthbar.SetMaxHealth(playerHealth);
+        armorCanvas.SetActive(false);
+       
     }
 
     void Update()
@@ -238,17 +244,33 @@ public class PlayerContoller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Armor"))
+        if (_notWearArmor == true)
         {
-            Debug.Log("WearArmor!");
-            ChangeAnimationState(ARMOR_UPGRADE);
-            _canMove = false;
-        }
+            if (col.CompareTag("Armor"))
+            {
+                Debug.Log("WearArmor!");
+                ChangeAnimationState(ARMOR_UPGRADE);
+                Armor.text = "You Find The Armor!!";
+                _canMove = false;
+                armorCanvas.SetActive(true);
+            }
 
-        else if (col.CompareTag("Empty"))
-        {
-            Debug.Log("Empty!");
+            else if (col.CompareTag("Empty"))
+            {
+                Debug.Log("Empty!");
+                Armor.text = "This House is Empty!!";
+                armorCanvas.SetActive(true);
+            }
+            else
+            {
+                armorCanvas.SetActive(false);
+            }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        armorCanvas.SetActive(false);
     }
 
     private void Attack()
