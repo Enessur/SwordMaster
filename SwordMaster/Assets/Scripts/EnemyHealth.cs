@@ -18,6 +18,8 @@ public class EnemyHealth : MonoBehaviour
             if (OnDamageTaken != null)
             {
                 OnDamageTaken(damage);
+                // Debug.Log("Enemy took damage :"+damage);
+                // Debug.Log("Enemy Health ="+health);
             }
         }
 

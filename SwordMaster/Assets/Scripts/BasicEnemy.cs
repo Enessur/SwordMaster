@@ -209,7 +209,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnDamageTaken(int damage)
     {
-        _canMove = false;
+      //  _canMove = false;
         OnDestroy();
     }
 

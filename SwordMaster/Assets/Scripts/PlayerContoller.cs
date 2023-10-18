@@ -76,6 +76,8 @@ public class PlayerContoller : MonoBehaviour
     const string TAKE_DAMAGE = "TakeDamage";
     const string DEATH = "Death";
     const string DASH = "Dash";
+    const string DEATH_NO_ARMOR = "DeathNoArmor";
+    const string TAKE_DAMAGE_NO_ARMOR = "TakeDamageNoArmor";
 
 
     private void Start()
@@ -90,7 +92,6 @@ public class PlayerContoller : MonoBehaviour
         _playerMaxHealt = playerHealth;
         healthbar.SetMaxHealth(playerHealth);
         armorCanvas.SetActive(false);
-       
     }
 
     void Update()
@@ -275,6 +276,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void Attack()
     {
+       
         ghost.makeGhost = true;
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
         Vector3 attackDir = (mousePosition - transform.position);
@@ -292,6 +294,7 @@ public class PlayerContoller : MonoBehaviour
 
         if (_canAttack == true)
         {
+            Debug.Log("Player Attack");
             _canMove = false;
             _attackNum++;
 
@@ -323,6 +326,10 @@ public class PlayerContoller : MonoBehaviour
             }
 
             _canAttack = false;
+        }
+        else
+        {
+            Debug.Log("Player Can't Attack");
         }
     }
 
@@ -358,14 +365,32 @@ public class PlayerContoller : MonoBehaviour
     public void TakeDamage(int takendamage)
     {
         playerHealth -= takendamage;
-        ChangeAnimationState(TAKE_DAMAGE);
+        if (_notWearArmor == true)
+        {
+            ChangeAnimationState(TAKE_DAMAGE_NO_ARMOR);
+        }
+        else
+        {
+            ChangeAnimationState(TAKE_DAMAGE);
+        }
+
         _shake.CamShake();
+        Debug.Log("Player took damage:"+takendamage);
+        Debug.Log("Player remaining health :"+playerHealth);
         Stop();
 
         if (playerHealth < 1)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
-            ChangeAnimationState(DEATH);
+            if (_notWearArmor == true)
+            {
+                ChangeAnimationState(DEATH_NO_ARMOR);
+            }
+            else
+            {
+                ChangeAnimationState(DEATH);
+            }
+
             Stop();
         }
 
